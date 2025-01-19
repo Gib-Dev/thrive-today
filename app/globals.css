@@ -1,16 +1,76 @@
+:root {
+  --color-primary: #6C63FF; /* Violet Énergique */
+  --color-secondary: #59C9A5; /* Vert Vitalité */
+  --color-background: #F8F9FA; /* Gris Clair */
+  --color-dark: #23272A; /* Noir Profond */
+  --color-accent: #FF4D4D; /* Rouge Motivation */
+  --color-white: #FFFFFF; /* Blanc Pur */
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+/*
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-}
+}*/
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  font-family: 'Arial', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: var(--color-secondary);
+}
+
+section {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    flex-direction: column;
+    gap: 10px;
+  }
+  button {
+    width: 100%;
+  }
 }
