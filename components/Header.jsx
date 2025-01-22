@@ -1,8 +1,6 @@
 import Image from "next/image";
-
-import banner from '@/public/weight.jpg';
 import logo from '@/public/logo.png';
-
+import banner from '@/public/weight.jpg';
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -28,8 +26,8 @@ export default function Header() {
         <Image
           src={banner}
           alt="ThriveToday Banner"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           quality={100}
           className={styles.bannerImage}
         />
