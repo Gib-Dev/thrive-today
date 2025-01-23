@@ -12,6 +12,9 @@ export default function Accueil() {
           "Si tu peux t'imaginer svelte physiquement et mentalement,
           c'est que tu peux le faire."
         </Highlight>
+        <Highlight author ="A B">  
+          "Ici, tu peut avoir le corps d'ont tu rêve et garder la santée à prix abordable."
+        </Highlight>
       </section>
     </div>
   </>
