@@ -1,22 +1,67 @@
 .highlight {
-   font-style: italic;
-   padding: 20px;
-   border-left: 4px solid var(--color-primary);
-   background-color: var(--color-white);
-   margin: 20px 0;
-   color: var(--color-dark);
-   border-radius: 5px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- }
- 
- .text {
-   font-size: 1.2rem;
-   margin-bottom: 10px;
- }
- 
- .author {
-   text-align: right;
-   font-weight: bold;
-   font-size: 1rem;
-   color: var(--color-primary);
- }
+  position: relative;
+  font-style: italic;
+  padding: 20px 30px;
+  border-left: 6px solid var(--color-primary); /* Bordure attrayante */
+  background: linear-gradient(135deg, var(--color-white) 60%, #f0f0f0);
+  margin: 30px 0;
+  color: var(--color-dark);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight:hover {
+  transform: translateY(-5px); /* Effet de survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.author {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-top: 10px;
+}
+
+/* Ajout d’un avant-plan décoratif */
+.highlight::before {
+  content: '❝'; /* Guillemet décoratif */
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 4rem;
+  color: var(--color-primary);
+  opacity: 0.1;
+}
+
+.highlight::after {
+  content: '❞'; /* Guillemet fermant */
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  font-size: 4rem;
+  color: var(--color-primary);
+  opacity: 0.1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .highlight {
+    padding: 15px 20px;
+  }
+
+  .text {
+    font-size: 1.1rem;
+  }
+
+  .author {
+    font-size: 0.9rem;
+  }
+}

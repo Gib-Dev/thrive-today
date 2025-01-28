@@ -1,6 +1,3 @@
-/* globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
-
 :root {
   --color-primary: #6C63FF; /* Violet Énergique */
   --color-secondary: #59C9A5; /* Vert Vitalité */
@@ -8,11 +5,9 @@
   --color-dark: #23272A; /* Noir Profond */
   --color-accent: #FF4D4D; /* Rouge Motivation */
   --color-white: #FFFFFF; /* Blanc Pur */
-
-  --font-roboto: 'Roboto', sans-serif;
-  --font-playfair: 'Playfair Display', serif;
 }
 
+/* Reset Styles */
 * {
   margin: 0;
   padding: 0;
@@ -20,143 +15,122 @@
 }
 
 body {
+  font-family: 'Arial', sans-serif;
   background-color: var(--color-background);
   color: var(--color-dark);
-  font-family: var(--font-roboto);
+  line-height: 1.6;
 }
 
-a {
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.header .logo {
+  cursor: pointer;
+}
+
+.header .nav {
+  display: flex;
+}
+
+.header .navList {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header .navList li a {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
-a:hover {
+
+.header .navList li a:hover {
   color: var(--color-accent);
 }
 
-button {
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-button:hover {
-  background-color: var(--color-secondary);
-}
-
-section {
-  padding: 20px;
-  margin: 20px 0;
-  background-color: var(--color-white);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3 {
-  font-family: var(--font-playfair);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .navList {
-    flex-direction: column;
-    gap: 10px;
-  }
-  button {
-    width: 100%;
-  }
-}
-
-/* Images */
-.about-image,
-.event-image {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-}
-
-.event-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: var(--color-white);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  width: 100%;
-  max-width: 400px;
-}
-
-.event-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
-}
-
-/* Section Hero */
+/* Main Sections */
 .hero-section {
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #6C63FF, #59C9A5);
-  color: white;
+  padding: 40px 20px;
+  background: var(--color-secondary);
+  color: var(--color-white);
 }
 
 .hero-title {
   font-size: 3rem;
-  font-family: var(--font-playfair);
   margin-bottom: 10px;
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  font-family: var(--font-roboto);
-  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
-/* Section About */
+/* About Section */
 .about-section {
-  padding: 60px 20px;
-  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: var(--color-white);
 }
 
-.about-content {
+.about-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-.about-image {
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.about-image-container {
+  flex: 1;
 }
 
-/* Section Events */
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  color: var(--color-dark);
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.about-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Events Section */
 .events-section {
-  padding: 60px 20px;
-  background-color: var(--color-white);
+  padding: 40px 20px;
+}
+
+.section-title {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .event-list {
@@ -167,58 +141,66 @@ h1, h2, h3 {
 }
 
 .event-card {
-  background-color: var(--color-background);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 300px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .event-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.event-card h3 {
-  margin-top: 10px;
-  font-size: 1.5rem;
-  font-family: var(--font-playfair);
-}
-
-.event-card a {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-/* Boutons */
-.button {
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.button:hover {
-  background-color: var(--color-secondary);
   transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Section Join */
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.event-link:hover {
+  color: var(--color-accent);
+}
+
+/* Join Section */
 .join-section {
   text-align: center;
   padding: 40px 20px;
-  background: var(--color-primary);
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-white);
 }
 
-.join-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.join-section .button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.join-section .button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.9rem;
+}
