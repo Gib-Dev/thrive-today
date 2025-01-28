@@ -1,54 +1,36 @@
 import '../globals.css';
 import Image from 'next/image';
 import team from '@/public/apropos.jpg';
+import styles from './apropos.module.css';
+
 
 export default function Apropos() {
   return <>
-    <main className="about-main">
-      {/* En-tête de la page */}
-      <section className="hero">
-        <h1 className="hero-title">À propos de ThriveToday</h1>
-        <p className="hero-subtitle">
+   <main className={styles.main}>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>À propos de ThriveToday</h1>
+        <p className={styles.subtitle}>
           Notre mission est de vous inspirer à atteindre vos objectifs physiques et mentaux.
         </p>
       </section>
-
-      {/* Section de présentation */}
-      <section className="about-content">
-        <div className="about-text">
+      <section className={styles['about-content']}>
+        <div className={styles['about-text']}>
           <h2>Notre Vision</h2>
           <p>
             Chez ThriveToday, nous croyons en l'importance de la santé et du bien-être pour
-            vivre une vie épanouie. Depuis notre création, nous avons aidé des centaines de
-            membres à transformer leur corps et leur esprit dans un environnement chaleureux
-            et accueillant.
-          </p>
-          <p>
-            Nous combinons des équipements de pointe avec une équipe dévouée pour vous
-            accompagner dans chaque étape de votre parcours.
+            vivre une vie épanouie.
           </p>
         </div>
-        <div className="about-image">
+        <div className={styles['about-image']}>
           <Image
             src={team}
             alt="Notre équipe"
             width={600}
             height={400}
-            className="about-photo"
+            className={styles['about-photo']}
           />
         </div>
       </section>
-
-      {/* Section valeurs */}
-      <section className="values">
-        <h2>Nos valeurs fondamentales</h2>
-        <ul className="values-list">
-          <li> Bien-être</li>
-          <li>Force et Résilience</li>
-          <li>Croissance personnelle</li>
-          <li>Communauté</li>
-        </ul>
-      </section>
     </main>
- </>
+  </>
 }

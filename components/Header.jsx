@@ -24,6 +24,11 @@ export default function Header() {
               </Link>
             </li>
             <li>
+            <Link href="/apropos" className={styles.navLink}>
+              À propos
+            </Link>
+          </li>
+            <li>
               <Link href="/events/yoga" className={styles.navLink}>
                 Yoga
               </Link>

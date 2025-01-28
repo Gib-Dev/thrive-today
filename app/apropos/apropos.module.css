@@ -1,64 +1,67 @@
 .about-main {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
   
+  /* En-tête de la section */
   .hero {
     text-align: center;
-    padding: 40px 20px;
     background-color: var(--color-primary);
     color: var(--color-white);
+    padding: 40px 20px;
+    border-radius: 10px;
   }
   
   .hero-title {
     font-size: 2.5rem;
+    font-weight: bold;
     margin-bottom: 10px;
   }
   
   .hero-subtitle {
     font-size: 1.2rem;
+    margin-top: 5px;
   }
   
+  /* Contenu principal de la section */
   .about-content {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
+    margin-top: 40px;
   }
   
   .about-text {
-    flex: 1;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--color-dark);
+    text-align: left;
   }
   
   .about-text h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: var(--color-primary);
   }
   
-  .about-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  .about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .about-image-container {
+    text-align: center;
   }
   
   .about-photo {
+    max-width: 100%;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  /* Section des valeurs */
   .values {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
     text-align: center;
-    padding: 40px 20px;
-    border-radius: 10px;
+    margin-top: 50px;
   }
   
   .values h2 {
@@ -67,20 +70,37 @@
   }
   
   .values-list {
-    list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
   }
   
   .values-list li {
     font-size: 1.2rem;
-    font-weight: bold;
-    background: var(--color-white);
-    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    color: var(--color-white);
     padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .about-text {
+      text-align: center;
+    }
+  
+    .values-list {
+      flex-direction: column;
+      gap: 15px;
+    }
   }
   
