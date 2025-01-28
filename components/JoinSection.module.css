@@ -1,0 +1,65 @@
+/* Section Rejoignez-nous */
+.join-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    border-radius: 10px;
+  }
+  
+  /* Titre */
+  .join-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Texte */
+  .join-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Bouton "Nous Contacter" */
+  .join-section .button-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Interaction au survol */
+  .join-section .button-link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Ajustements pour mobile */
+  @media (max-width: 768px) {
+    .join-section {
+      padding: 25px 15px;
+    }
+  
+    .join-section h2 {
+      font-size: 1.8rem;
+    }
+  
+    .join-section p {
+      font-size: 1rem;
+    }
+  
+    .join-section .button-link {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+  
