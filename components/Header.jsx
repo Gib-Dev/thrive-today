@@ -34,7 +34,12 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#contact" className={styles.navLink}>
+              <Link href="/events/martial" className={styles.navLink}>
+                Arts Martiaux
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className={styles.navLink}>
                 Contact
               </Link>
             </li>

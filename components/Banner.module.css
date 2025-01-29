@@ -49,6 +49,7 @@
     font-size: 1rem;
     font-weight: bold;
     border-radius: 30px; 
+    text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
