@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Banner from "@/components/Banner";
@@ -5,6 +8,12 @@ import logo from '@/public/logo.png';
 import styles from "./Header.module.css";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return <>
       <header className={styles.header}>
         {/* Navigation principale */}
@@ -39,7 +48,12 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#contact" className={styles.navLink}>
+              <Link href="/events/martial" className={styles.navLink}>
+                Arts Martiaux
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className={styles.navLink}>
                 Contact
               </Link>
             </li>

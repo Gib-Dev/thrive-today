@@ -1,97 +1,29 @@
-## Cahier des Spécifications Fonctionnelles Générales
+# Projet ThriveToday
+Ce projet consiste à créer un site web interactif pour une salle d'entraînement proposant divers événements 
+tels que des ateliers de yoga, des cours de Pilates, et des sessions de remise en forme.
 
-### 1. Introduction
-**Contexte** : Le projet consiste à développer un site web pour une salle d'entraînement proposant des activités comme le Karaté, le Judo, le MMA et le Taekwondo. Ce site doit permettre de présenter les disciplines, inscrire les utilisateurs et mettre en avant les entraîneurs.
+## Technologies
+- Framework : React avec Next.js 
+- Langages : JavaScript, HTML, CSS
+- Outils de design : Canva
 
-**Objectif** : Fournir une plateforme intuitive et accessible permettant aux utilisateurs de découvrir et de s'inscrire aux cours proposés par la salle d'entraînement.
+## Références
+- [Guide officiel Next.js](https://nextjs.org/docs)
+- [Guide officiel React](https://reactjs.org/docs)
+- Site de sport exemple :
+    - [Fit Good](https://fit-good.fr/)
+    - [Gym sport](https://www.gymsportsloisirs.fr/)
+    - [Liberty Gym](https://libertygym.fr/)
 
----
 
-### 2. Description du Système
-**Vision** : Offrir un espace en ligne moderne et efficace permettant de connecter les passionnés d'arts martiaux avec une communauté dynamique et des services personnalisés.
+## Palette de couleurs
+- Coolors : Utilisé pour définir et harmoniser les palettes de couleurs du projet.
 
-**Portée** :
-- Gestion des utilisateurs (inscriptions, profils).
-- Présentation des disciplines avec détails visuels.
-- Affichage des entraîneurs et de leurs spécialités.
-- Système d'inscription aux cours.
 
----
-
-### 3. Exigences Fonctionnelles
-**Fonctionnalités Principales** :
-1. **Gestion des utilisateurs** :
-   - Inscription et connexion via formulaire.
-   - Gestion des profils utilisateurs.
-
-2. **Présentation des disciplines** :
-   - Section avec images, descriptions et horaires.
-
-3. **Gestion des entraîneurs** :
-   - Page dédiée à chaque entraîneur avec leurs spécialités et expériences.
-
-4. **Inscription aux cours** :
-   - Choix des disciplines et entraîneurs.
-   - Validation de la participation via email.
-
----
-
-### 4. Exigences Non Fonctionnelles
-**Performances** :
-- Le temps de chargement des pages doit être inférieur à 2 secondes.
-
-**Accessibilité** :
-- Compatible avec les navigateurs modernes (Chrome, Firefox, Safari).
-- Adapté aux appareils mobiles et tablettes (design responsive).
-
-**Sécurité** :
-- Utilisation de HTTPS pour toutes les communications.
-- Protection des données personnelles conformément au RGPD.
-
----
-
-### 5. Contraintes
-- **Budget** : Le projet ne doit pas excéder un coût de développement prédéfini.
-- **Délais** : Livraison finale dans un délai de 8 semaines.
-- **Technologies imposées** : Utilisation de React.js, Next.js et MongoDB.
-
----
-
-### 6. Planning
-
-#### Diagramme de Gantt
-![Diagramme de Gantt](sandbox:/mnt/data/project_gantt_chart.png)
-
-#### Phases Principales :
-1. **Analyse des besoins** : 1 semaine.
-2. **Conception** : 2 semaines.
-3. **Développement** : 4 semaines.
-4. **Tests et validation** : 1 semaine.
-5. **Livraison finale** : 1 semaine.
-
----
-
-### 7. Validation
-**Critères d'acceptation** :
-- Fonctionnalités conformes aux exigences listées.
-- Tests utilisateurs réussis.
-- Site opérationnel et accessible.
-
----
-
-### 8. Annexes
-- **Documentation Technique** : Fournie lors de la livraison.
-- **Manuel Utilisateur** : Guide pour les administrateurs et utilisateurs finaux.
-
----
-
-### Références
-
-#### Guides techniques :
-- [Documentation Next.js](https://nextjs.org/docs)
-- [Documentation React](https://reactjs.org/docs)
-
-#### Inspiration :
-- [Fit Good](https://fit-good.fr/)
-- [Gym Sport](https://www.gymsportsloisirs.fr/)
-- [Liberty Gym](https://libertygym.fr/)
+## Étapes réalisées
+1. Création du logo et définition de l'identité visuelle.
+2. Sélection d'images pertinentes via Unsplash.
+3. Création et application d'une palette de couleurs avec Coolors.
+4. Conception des composants dans Next.js et React.
+5. Organisation des fichiers et styles pour une structure maintenable.
+6. Mise en œuvre des bonnes pratiques Git pour une gestion de version propre.

@@ -5,6 +5,12 @@
   --color-dark: #23272A; /* Noir Profond */
   --color-accent: #FF4D4D; /* Rouge Motivation */
   --color-white: #FFFFFF; /* Blanc Pur */
+  --font-roboto: 'Roboto', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  
+  --max-width: 1280px;
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Reset Styles */
@@ -204,3 +210,17 @@ footer {
   color: var(--color-white);
   font-size: 0.9rem;
 }
+
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.hover-scale {
+  transition: var(--transition);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+

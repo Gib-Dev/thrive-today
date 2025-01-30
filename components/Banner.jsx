@@ -1,5 +1,6 @@
 import Image from "next/image";
 import banner from '@/public/weight.jpg';
+import Link from 'next/link';
 import styles from "./Banner.module.css";
 
 export default function Banner() {
@@ -18,7 +19,9 @@ export default function Banner() {
                 <p className={styles.bannerSubtitle}>Votre partenaire pour une vie saine et active</p>
                 <div className={styles.ctaButtons}>
                     <button className={`${styles.ctaButton} ${styles.primary}`}>Nos Programmes</button>
-                    <button className={`${styles.ctaButton} ${styles.secondary}`}>En savoir plus</button>
+                    <Link href="/apropos" className={`${styles.ctaButton} ${styles.secondary}`}>
+                    En savoir plus
+                    </Link>
                 </div>
             </div>
         </div>

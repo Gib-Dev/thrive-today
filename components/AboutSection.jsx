@@ -3,6 +3,8 @@ import Link from 'next/link';
 import styles from './AboutSection.module.css';
 import skretching from '@/public/skretching.jpg';
 
+
+
 export default function AboutSection() {
   return <>
     <section id="about" className={styles['about-section']}>
