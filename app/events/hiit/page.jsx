@@ -82,7 +82,6 @@ export default function HIITEventPage() {
               </div>
             </div>
             <div className={styles.infoMap}>
-              {/* Ajouter ici un composant de carte ou une image */}
               <div className={styles.mapPlaceholder} />
             </div>
           </div>   
