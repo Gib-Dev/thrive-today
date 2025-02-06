@@ -8,11 +8,7 @@ import logo from '@/public/logo.png';
 import styles from "./Header.module.css";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  
 
   return <>
       <header className={styles.header}>
@@ -59,7 +55,6 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-
 
         {/* Bannière */}
         <Banner />

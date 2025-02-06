@@ -7,14 +7,8 @@ import EventsSection from '@/components/EventsSection';
 import JoinSection from '@/components/JoinSection';
 import { useState } from 'react';
 
-
-
 export default function Apropos() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  
 
   return <>
     <main>

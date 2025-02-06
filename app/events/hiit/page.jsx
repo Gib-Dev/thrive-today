@@ -88,6 +88,5 @@ export default function HIITEventPage() {
         </section>
       </main>
       <JoinSection />
-
     </>
 }

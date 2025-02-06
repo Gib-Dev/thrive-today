@@ -22,7 +22,6 @@ const MartialArtsPage = () => {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             <span className={styles.titleHighlight}>Maîtrise Martiale</span>
-            <br />
             Excellence & Discipline
           </h1>
           <p className={styles.heroText}>
@@ -82,7 +81,7 @@ const MartialArtsPage = () => {
         <div className={styles.joinContent}>
           <div className={styles.joinText}>
             <h2 className={styles.joinTitle}>
-              Prêt à relever le<br />
+              Prêt à relever le
               <span className={styles.titleAccent}>défi</span> ?
             </h2>
             <p className={styles.joinSubtitle}>
