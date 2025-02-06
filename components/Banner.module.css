@@ -81,6 +81,10 @@
 }
 
 @media (max-width: 768px) {
+    .banner {
+        height: 300px;
+    }
+
     .bannerTitle {
         font-size: 2.5rem;
     }

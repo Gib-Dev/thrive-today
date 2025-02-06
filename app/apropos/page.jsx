@@ -55,8 +55,8 @@ export default function Apropos() {
               <Image
                 src={team}
                 alt="Notre équipe de spécialistes"
-                width={640}
-                height={427}
+                layout="responsive"
+                objectFit="cover"
                 className={styles.aboutImage}
                 placeholder="blur"
                 priority
