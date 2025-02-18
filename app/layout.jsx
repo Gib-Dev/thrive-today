@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en" className={`${roboto.className} ${playfair.className}`}>
+  return <html lang="fr" className={`${roboto.className} ${playfair.className}`}>
         <body className={styles.body}>
           <Header />
 
