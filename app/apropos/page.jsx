@@ -1,17 +1,13 @@
 'use client';
 import '../globals.css';
 import Image from 'next/image';
-import team from '@/public/apropos.jpg';
 import styles from './apropos.module.css';
-import EventsSection from '@/components/EventsSection';
 import JoinSection from '@/components/JoinSection';
-import { useState } from 'react';
 
 export default function Apropos() {
-  
-
   return <>
     <main>
+      {/* Section Hero */}
       <section className={styles.hero}>
         <div className="container">
           <h1 className={styles.title}>À propos de ThriveToday</h1>
@@ -21,13 +17,15 @@ export default function Apropos() {
         </div>
       </section>
 
+      {/* Section À propos */}
       <section className={`${styles.aboutContent} section-spacing`}>
         <div className="container">
           <div className={styles.contentGrid}>
+            {/* Texte de présentation */}
             <div className={styles.textContent}>
               <h2>Notre philosophie d&apos;accompagnement</h2>
               <p className={styles.leadText}>
-                Chez ThriveToday, nous conjuguons expertise scientifique et approche humaine pour 
+                Chez ThriveToday, nous conjuguons expertise scientifique et approche humaine pour
                 vous offrir un accompagnement sur mesure dans votre quête de bien-être.
               </p>
               <div className={styles.missionStatement}>
@@ -45,20 +43,20 @@ export default function Apropos() {
               </div>
             </div>
 
+            {/* Image d'illustration avec ton style */}
             <div className={styles.imageWrapper}>
               <Image
-                src={team}
+                src="/apropos.jpg"
                 alt="Notre équipe de spécialistes"
-                layout="responsive"
-                objectFit="cover"
+                width={500}
+                height={350}
                 className={styles.aboutImage}
-                placeholder="blur"
                 priority
               />
             </div>
           </div>
-          <EventsSection />
-          <JoinSection />
+          {/* Section Rejoindre */}
+          <JoinSection className={styles.joinSection} />
         </div>
       </section>
     </main>

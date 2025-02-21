@@ -20,7 +20,7 @@ export default function Banner() {
                 <div className={styles.ctaButtons}>
                     <button className={`${styles.ctaButton} ${styles.primary}`}>Nos Programmes</button>
                     <Link href="/apropos" className={`${styles.ctaButton} ${styles.secondary}`}>
-                    En savoir plus
+                        En savoir plus
                     </Link>
                 </div>
             </div>

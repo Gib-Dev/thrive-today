@@ -3,31 +3,25 @@ import Link from 'next/link';
 import styles from './AboutSection.module.css';
 import skretching from '@/public/skretching.jpg';
 
-export default function AboutSection() {
-  return <>
-    <section id="about" className={styles['about-section']}>
-      <div className={styles['about-container']}>
-        <div className={styles['about-image-container']}>
-          <Image
-            src={skretching}
-            alt="Salle d'entraînement"
-            width={500}
-            height={300}
-            className={styles['about-image']}
-          />
+export default function AboutSection({ title, text, imageSrc, link, linkText }) {
+    return <section id="about" className={styles.aboutSection}>
+        <div className={styles.aboutContainer}>
+            <div className={styles.imageContainer}>
+                <Image
+                    src={imageSrc || skretching}
+                    alt="Salle d'entraînement"
+                    width={500}
+                    height={300}
+                    className={styles.aboutImage}
+                />
+            </div>
+            <div className={styles.textContainer}>
+                <h2>{title}</h2>
+                <p>{text}</p>
+                <Link href={link} className={styles.aboutButton}>
+                    {linkText || "En savoir plus"}
+                </Link>
+            </div>
         </div>
-        <div className={styles['about-text']}>
-          <h2>À propos de nous</h2>
-          <p>
-            Chez ThriveToday, nous croyons en l'importance de la santé physique et mentale. 
-            Notre mission est d'offrir un environnement accueillant et des programmes adaptés 
-            à tous les niveaux, que vous soyez débutant ou confirmé.
-          </p>
-          <Link href="/apropos" className={styles['about-button']}>
-            En savoir plus
-          </Link>
-        </div>
-      </div>
     </section>
-  </>
 }

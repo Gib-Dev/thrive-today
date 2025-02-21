@@ -9,21 +9,18 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata = {
-  title : "ThriveToday",
-  description: "Votre menthor pour une vie pleine d'énergies",
+  title: "ThriveToday",
+  description: "Votre mentor pour une vie pleine d'énergies",
 };
 
 export default function RootLayout({ children }) {
   return <html lang="fr" className={`${roboto.className} ${playfair.className}`}>
-        <body className={styles.body}>
-          <Header />
-
-          <main className={styles.main}>
-            {children}
-          </main>
-
-          <Footer />
-
-          </body>
-      </html>
+    <body className={styles.body}>
+      <Header />
+      <main className={styles.main}>
+        {children}
+      </main>
+      <Footer />
+    </body>
+  </html>
 }

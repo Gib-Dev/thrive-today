@@ -1,21 +1,18 @@
 import styles from './HeroSection.module.css';
 import Highlight from '@/components/Highlight';
+import { quotesData } from '@/data/quotes';
 
-export default function HeroSection() {
-  return <>
-    <section id="home" className={styles['hero-section']}>
-      <h1 className={styles['hero-title']}>Bienvenue chez ThriveToday</h1>
-      <p className={styles['hero-subtitle']}>
-        Transformez votre corps et votre esprit dans un environnement inspirant.
-      </p>
+export default function HeroSection({ title, subtitle, backgroundImage, highlights = quotesData }) {
+  return <section id="home" className={styles.heroSection} style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <h1 className={styles.heroTitle}>{title}</h1>
+    <p className={styles.heroSubtitle}>{subtitle}</p>
+
+    {highlights.length > 0 && (
       <div className={styles.highlights}>
-        <Highlight author="M B">
-          "Si tu peux t'imaginer svelte, c'est que tu peux le faire."
-        </Highlight>
-        <Highlight author="A B">
-          "Ici, tu peux avoir le corps dont tu rêves et garder la santé."
-        </Highlight>
+        {highlights.map((quote, index) => (
+          <Highlight key={index} author={quote.author}>{quote.text}</Highlight>
+        ))}
       </div>
-    </section>
-  </>
+    )}
+  </section>
 }

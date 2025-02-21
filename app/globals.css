@@ -1,13 +1,12 @@
 :root {
-  --color-primary: #6C63FF; /* Violet Énergique */
-  --color-secondary: #59C9A5; /* Vert Vitalité */
-  --color-background: #F8F9FA; /* Gris Clair */
-  --color-dark: #23272A; /* Noir Profond */
-  --color-accent: #FF4D4D; /* Rouge Motivation */
-  --color-white: #FFFFFF; /* Blanc Pur */
-  --font-roboto: 'Roboto', sans-serif;
-  --font-playfair: 'Playfair Display', serif;
-  
+  --color-primary: #6c63ff; /* Violet Énergique */
+  --color-secondary: #59c9a5; /* Vert Vitalité */
+  --color-background: #f8f9fa; /* Gris Clair */
+  --color-dark: #23272a; /* Noir Profond */
+  --color-accent: #ff4d4d; /* Rouge Motivation */
+  --color-white: #ffffff; /* Blanc Pur */
+  --font-roboto: "Roboto", sans-serif;
+  --font-playfair: "Playfair Display", serif;
   --max-width: 1280px;
   --border-radius: 12px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -21,7 +20,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: var(--color-background);
   color: var(--color-dark);
   line-height: 1.6;
@@ -223,4 +222,3 @@ footer {
 .hover-scale:hover {
   transform: scale(1.02);
 }
-

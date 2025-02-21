@@ -8,8 +8,6 @@
   background: var(--gray-alpha-100);
 }
 
-
-
 /* Responsiveness for mobile devices */
 @media (max-width: 768px) {
   .about-container {

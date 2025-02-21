@@ -1,27 +1,14 @@
-/* Section Rejoignez-nous */
-.join-section {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    color: var(--color-white);
-    border-radius: 10px;
-  }
-  
-  /* Titre */
-.join-section h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+.joinSection {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 6rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  border-radius: 10px;
 }
-  
-  /* Texte */
-.join-section p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-  
-  /* Bouton "Nous Contacter" */
-.join-section .button-link {
+
+/* Bouton "Nous Contacter" */
+.buttonLink {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 25px;
@@ -34,32 +21,23 @@
   transition: all 0.3s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
-  
-  /* Interaction au survol */
-.join-section .button-link:hover {
+
+/* Interaction au survol */
+.buttonLink:hover {
   background-color: var(--color-accent);
   color: var(--color-white);
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-  
-  /* Ajustements pour mobile */
+
 @media (max-width: 768px) {
-  .join-section {
-    padding: 25px 15px;
+  .joinSection {
+    padding: 30px 20px;
   }
-  
-  .join-section h2 {
-    font-size: 1.8rem;
-  }
-  
-  .join-section p {
-    font-size: 1rem;
-  }
-  
-  .join-section .button-link {
-    font-size: 1rem;
-    padding: 10px 20px;
+
+  .joinButton {
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
   }
 }
-  

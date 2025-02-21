@@ -7,6 +7,13 @@ tels que des ateliers de yoga, des cours de Pilates, et des sessions de remise e
 - Langages : JavaScript, HTML, CSS
 - Outils de design : Canva
 
+## Fonctionnalités principales
+- **Page d’accueil** avec une introduction sur Thrive Today.
+- **Liste des événements disponibles** avec descriptions et images.
+- **Pages individuelles** pour chaque événement avec détails, images et instructions.
+- **Navigation fluide en SPA** pour éviter les rechargements de page.
+- **Design ergonomique et moderne**, optimisé pour mobile et desktop.
+
 ## Références
 - [Guide officiel Next.js](https://nextjs.org/docs)
 - [Guide officiel React](https://reactjs.org/docs)
