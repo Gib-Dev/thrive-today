@@ -11,7 +11,6 @@ export async function submitForm(formData) {
     return [error, newFormState];
   }
 
-  // Simuler un traitement (ex: stockage en base de données ou envoi d'un e-mail)
   console.log("Données soumises:", Object.fromEntries(formData));
 
   // Rediriger après succès
