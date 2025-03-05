@@ -4,8 +4,6 @@ import sendEmail from "@/sendEmail";
 export async function submitForm(prevState, formData) {
   let errors = {};
 
-  
-
   if (!formData.get("name")) {
     errors.name = "Le nom est requis.";
   }

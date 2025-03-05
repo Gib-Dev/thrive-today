@@ -18,7 +18,7 @@ export default function ContactForm() {
         if (state.success) {
             setFormData({ name: "", email: "", message: "" });
         }
-            }, [state.success]);
+    }, [state.success]);
 
     return (
         <form action={formAction} className={styles.form} noValidate>
