@@ -1,60 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./ContactForm.module.css";
 import { FaUser, FaEnvelope, FaCommentDots, FaExclamationCircle } from "react-icons/fa";
 import { submitForm } from "../action/formAction";
-
 export default function ContactForm() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-    const [state, setState] = useState({ success: null, message: "" });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [state, formAction] = useActionState(submitForm, {});
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setState({ success: null, message: "" });
-
-        const result = await submitForm(formData);
-
-        setState(result);
-        setIsSubmitting(false);
-
-        if (result.success) {
+    // Réinitialiser les champs du formulaire après un envoi réussi
+    useEffect(() => {
+        if (state.success) {
             setFormData({ name: "", email: "", message: "" });
         }
-    };
+    }, [state.success]);
 
-    const isFormValid = formData.name && formData.email && formData.message;
+    return (
+        <form action={formAction} className={styles.form} noValidate>
+            <div className={styles.field}>
+                <label><FaUser /> Nom :</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={state.name ? styles.errorInput : ""}
+                />
+                {state.name && <p className={styles.error}><FaExclamationCircle /> {state.name}</p>}
+            </div>
 
-    return <form onSubmit={handleSubmit} className={styles.form} noValidate>
-        <div className={styles.field}>
-            <label><FaUser /> Nom :</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-        </div>
+            <div className={styles.field}>
+                <label><FaEnvelope /> Email :</label>
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={state.email ? styles.errorInput : ""}
+                />
+                {state.email && <p className={styles.error}><FaExclamationCircle /> {state.email}</p>}
+            </div>
 
-        <div className={styles.field}>
-            <label><FaEnvelope /> Email :</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
+            <div className={styles.field}>
+                <label><FaCommentDots /> Message :</label>
+                <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={state.message ? styles.errorInput : ""}
+                ></textarea>
+                {state.message && <p className={styles.error}><FaExclamationCircle /> {state.message}</p>}
+            </div>
 
-        <div className={styles.field}>
-            <label><FaCommentDots /> Message :</label>
-            <textarea name="message" value={formData.message} onChange={handleChange} required />
-        </div>
+            <button type="submit" className={styles.button} disabled={state.isSubmitting}>
+                {state.isSubmitting ? "Envoi en cours..." : "Envoyer"}
+            </button>
 
-        {state.message && (
-            <p className={state.success ? styles.success : styles.error}>
-                {state.success ? "" : "Erreur "} {state.message}
-            </p>
-        )}
-
-        <button type="submit" className={styles.button} disabled={!isFormValid || isSubmitting}>
-            {isSubmitting ? "Envoi en cours..." : "Envoyer"}
-        </button>
-    </form>;
+            {state.success && <p className={styles.success}>Votre message a été envoyé avec succès !</p>}
+        </form>
+    );
 }
