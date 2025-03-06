@@ -1,6 +1,6 @@
 export async function submitForm(formData) {
   try {
-    console.log("🔍 Vérification - Envoi à l'URL :", "https://api.emailjs.com/api/v1.0/email/send");
+    console.log("Vérification - Envoi à l'URL :", "https://api.emailjs.com/api/v1.0/email/send");
 
     const templateParams = {
       from_name: formData.name,
@@ -21,7 +21,7 @@ export async function submitForm(formData) {
       }),
     });
 
-    console.log("📩 Réponse EmailJS :", response.status, await response.text());
+    console.log("Réponse EmailJS :", response.status, await response.text());
 
     if (!response.ok) {
       throw new Error(`Erreur EmailJS : ${response.status}`);
