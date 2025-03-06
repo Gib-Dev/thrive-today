@@ -1,25 +1,35 @@
-"use server";
+export async function submitForm(formData) {
+  try {
+    console.log("🔍 Vérification - Envoi à l'URL :", "https://api.emailjs.com/api/v1.0/email/send");
 
-export async function submitForm(prevState, formData) {
-  let errors = {};
+    const templateParams = {
+      from_name: formData.name,
+      message: formData.message,
+      user_email: formData.email,
+    };
 
-  if (!formData.get("name")) {
-    errors.name = "Le nom est requis.";
+    const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        service_id: "service_zosra66",
+        template_id: "template_ecv8r1m",
+        user_id: "8eEHBeFvu5lwQ5vnr",
+        template_params: templateParams,
+      }),
+    });
+
+    console.log("📩 Réponse EmailJS :", response.status, await response.text());
+
+    if (!response.ok) {
+      throw new Error(`Erreur EmailJS : ${response.status}`);
+    }
+
+    return { success: true, message: "Votre message a été envoyé avec succès !" };
+  } catch (error) {
+    console.error("Erreur lors de l'envoi de l'email :", error);
+    return { success: false, message: "Erreur interne, veuillez réessayer plus tard." };
   }
-
-  if (!formData.get("email") || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.get("email"))) {
-    errors.email = "Adresse e-mail invalide.";
-  }
-
-  if (!formData.get("message")) {
-    errors.message = "Le message est requis.";
-  }
-
-  if (Object.keys(errors).length > 0) {
-    return errors; // Retourne les erreurs sans recharger la page
-  }
-
-  console.log("Données soumises :", Object.fromEntries(formData));
-
-  return { success: true };
 }
