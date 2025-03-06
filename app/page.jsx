@@ -6,6 +6,11 @@ import JoinSection from '@/components/JoinSection';
 import { eventsData } from '@/data/events';
 
 
+export const metadata = {
+  title: "ThriveToday",
+  description: "Votre mentor pour une vie pleine d'énergies",
+};
+
 export default function Accueil() {
   return <>
     <main>

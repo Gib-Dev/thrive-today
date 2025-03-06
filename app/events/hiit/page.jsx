@@ -3,6 +3,11 @@ import EventDetails from '@/components/EventDetails';
 import EventBenefits from '@/components/EventBenefits';
 import JoinSection from '@/components/JoinSection';
 
+export const metadata = {
+  title: "Entrainement haute intensité | Thrive Today",
+  description: "Découvrez nos séances d'entrainement à haute intensité",
+};
+
 const hiitEvent = {
   title: "HIIT",
   category: "Entraînement",

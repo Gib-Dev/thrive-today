@@ -1,8 +1,12 @@
-'use client';
 import '../globals.css';
 import Image from 'next/image';
 import styles from './apropos.module.css';
 import JoinSection from '@/components/JoinSection';
+
+export const metadata = {
+  title: "À propos de nous | Thrive Today",
+  description: "Plus d'info sur le gym Thrive today",
+};
 
 export default function Apropos() {
   return <>

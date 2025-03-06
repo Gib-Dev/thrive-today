@@ -3,6 +3,11 @@ import EventDetails from '@/components/EventDetails';
 import EventBenefits from '@/components/EventBenefits';
 import JoinSection from '@/components/JoinSection';
 
+export const metadata = {
+  title: "Arts Martiaux | Thrive Today",
+  description: "Découvrez nos différents cours d'arts martiaux",
+};
+
 const martialEvent = {
   title: "Arts Martiaux",
   category: "Discipline & Force",
