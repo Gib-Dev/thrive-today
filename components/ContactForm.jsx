@@ -49,7 +49,7 @@ export default function ContactForm() {
 
         {state.message && (
             <p className={state.success ? styles.success : styles.error}>
-                {state.success ? "OK " : "Erreur "} {state.message}
+                {state.success ? "" : "Erreur "} {state.message}
             </p>
         )}
 
