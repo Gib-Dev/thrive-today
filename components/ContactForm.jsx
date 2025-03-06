@@ -50,6 +50,7 @@ export default function ContactForm() {
                 <input
                     type="text"
                     name="name"
+                    placeholder="Nom"
                     value={formData.name}
                     onChange={handleChange}
                     className={state.name ? styles.errorInput : ""}
@@ -62,6 +63,7 @@ export default function ContactForm() {
                 <input
                     type="email"
                     name="email"
+                    placeholder="Addresse Email"
                     value={formData.email}
                     onChange={handleChange}
                     className={state.email ? styles.errorInput : ""}
