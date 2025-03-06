@@ -7,7 +7,30 @@ import { FaUser, FaEnvelope, FaCommentDots, FaExclamationCircle } from "react-ic
 import { submitForm } from "../action/formAction";
 export default function ContactForm() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-    const [state, formAction] = useActionState(submitForm, {});
+    const [state, formAction] = useActionState(validation, {});
+
+    function validation(prevState, formData){
+        state.success = false;
+        let errors = {};
+
+        if (!formData.get("name")) {
+            errors.name = "Le nom est requis.";
+        }
+  
+        if (!formData.get("email") || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.get("email"))) {
+            errors.email = "Adresse e-mail invalide.";
+        }
+  
+        if (!formData.get("message")) {
+            errors.message = "Le message est requis.";
+        }
+  
+        if (Object.keys(errors).length > 0) {
+        return errors; // Retourne les erreurs sans recharger la page
+        }
+        submitForm(prevState, formData);
+        return { success: true };
+    }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
