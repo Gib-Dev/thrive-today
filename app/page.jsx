@@ -17,7 +17,7 @@ export default function Accueil() {
       <HeroSection
         title="Bienvenue chez ThriveToday"
         subtitle="Transformez votre corps et votre esprit dans un environnement inspirant."
-        backgroundImage="/hero-fitness.jpg"
+        backgroundImage="/hero-fitness.avifc"
       />
       <AboutSection
         title="À propos de nous"

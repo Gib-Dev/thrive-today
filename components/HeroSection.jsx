@@ -3,7 +3,7 @@ import Highlight from '@/components/Highlight';
 import { quotesData } from '@/data/quotes';
 
 export default function HeroSection({ title, subtitle, backgroundImage, highlights = quotesData }) {
-  return <section id="home" className={styles.heroSection} style={{ backgroundImage: `url(${backgroundImage})` }}>
+  return <section id="home" className={styles.heroSection} style={{ backgroundImage: `url(${backgroundImage})`, loading: 'eager' }}>
     <h1 className={styles.heroTitle}>{title}</h1>
     <p className={styles.heroSubtitle}>{subtitle}</p>
 

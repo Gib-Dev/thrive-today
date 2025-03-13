@@ -9,6 +9,7 @@ export default function Banner() {
             <Image
                 src={banner}
                 alt="ThriveToday Banner"
+                loading="eager"
                 fill
                 style={{ objectFit: "cover" }}
                 quality={100}
