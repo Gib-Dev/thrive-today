@@ -21,7 +21,6 @@ export async function submitForm(prevState, formData) {
         if (Object.keys(errors).length > 0) {
         return errors; // Retourne les erreurs sans recharger la page
         }
-        submitForm(prevState, formData);
   let nom = Object.fromEntries(formData).name
   let email = Object.fromEntries(formData).email
   let message = Object.fromEntries(formData).message
