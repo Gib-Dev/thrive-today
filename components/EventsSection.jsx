@@ -17,6 +17,7 @@ export default function EventsSection({ events }) {
                                 alt={event.title}
                                 width={400}
                                 height={250}
+                                loading="lazy"
                                 className={styles['event-image']}
                             />
                             <h3>{event.title}</h3>

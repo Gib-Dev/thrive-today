@@ -13,6 +13,7 @@ export default function AboutSection({ title, text, imageSrc, link, linkText }) 
                     width={500}
                     height={300}
                     className={styles.aboutImage}
+                    priority
                 />
             </div>
             <div className={styles.textContainer}>

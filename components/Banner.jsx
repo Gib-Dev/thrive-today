@@ -11,6 +11,7 @@ export default function Banner() {
                 alt="ThriveToday Banner"
                 loading="eager"
                 fill
+                priority
                 style={{ objectFit: "cover" }}
                 quality={100}
                 className={styles.bannerImage}
