@@ -1,12 +1,19 @@
+'use client'
 // On importe le composant Image optimisé de Next.js pour gérer les images de manière performante
 import Image from 'next/image';
 
 // On applique les styles CSS spécifiques à ce composant via le fichier module CSS
 import styles from './EventHero.module.css';
+import { usePathname } from 'next/navigation';
+
 
 // Le composant EventHero est conçu pour afficher une section visuelle forte en haut d'une page d'événement.
 // Il met en valeur une image de fond immersive avec le titre, la catégorie, une description et deux boutons d'appel à l'action.
 export default function EventHero({ title, category, description, image }) {
+    
+const pathname = usePathname();
+
+const loadingStrategy = pathname === '/events/hiit' || '/events/martial' ? 'eager' : 'lazy';
     return (
         <section className={styles.hero}>
             {/* Cette division contient l’image de fond qui occupe toute la largeur et la hauteur de la section */}
@@ -16,7 +23,8 @@ export default function EventHero({ title, category, description, image }) {
                     alt={title}                 // Texte alternatif important pour l’accessibilité et le SEO
                     layout="fill"               // Permet à l’image de remplir tout son conteneur (cover full section)
                     objectFit="cover"           // L’image s’adapte au conteneur sans être déformée
-                    priority                    // On force le chargement prioritaire pour booster les performances Lighthouse
+                    priority = {pathname === '/events/hiit' || '/events/martial'}
+                    loading= {loadingStrategy}                   // On force le chargement prioritaire pour booster les performances Lighthouse
                     quality={85}                // Niveau de compression pour équilibrer qualité visuelle et performance
                     className={styles.heroImage} // On applique les styles définis pour cette image
                 />

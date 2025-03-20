@@ -1,8 +1,13 @@
+'use client'
 import Image from 'next/image';
 import styles from './HeroSection.module.css';
 import Highlight from '@/components/Highlight';
 import { quotesData } from '@/data/quotes';
+import { usePathname } from 'next/navigation';
 
+const pathname = usePathname();
+
+const loadingStrategy = pathname === '/events/hiit' || '/events/martial' ? 'lazy' : 'eager';
 export default function HeroSection({ title, subtitle, backgroundImage = '/hero-fitness.webp', highlights = quotesData }) {
   return (
     <section className={styles.heroSection}>
@@ -12,7 +17,8 @@ export default function HeroSection({ title, subtitle, backgroundImage = '/hero-
           src={backgroundImage}
           alt="Image de fond Hero"
           fill
-          priority
+          priority = {pathname === '/events/hiit' || '/events/martial'}
+          loading={loadingStrategy}
           quality={85}
           className={styles.heroImage}
         />
