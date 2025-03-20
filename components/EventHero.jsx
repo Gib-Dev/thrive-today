@@ -6,7 +6,6 @@ import Image from 'next/image';
 import styles from './EventHero.module.css';
 import { usePathname } from 'next/navigation';
 
-
 // Le composant EventHero est conçu pour afficher une section visuelle forte en haut d'une page d'événement.
 // Il met en valeur une image de fond immersive avec le titre, la catégorie, une description et deux boutons d'appel à l'action.
 export default function EventHero({ title, category, description, image }) {
