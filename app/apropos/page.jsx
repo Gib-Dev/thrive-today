@@ -50,7 +50,7 @@ export default function Apropos() {
             {/* Image d'illustration avec ton style */}
             <div className={styles.imageWrapper}>
               <Image
-                src="/apropos.jpg"
+                src="/apropos.webp"
                 alt="Notre équipe de spécialistes"
                 width={500}
                 height={350}
