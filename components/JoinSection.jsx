@@ -2,7 +2,6 @@ import Link from 'next/link';
 import styles from './JoinSection.module.css';
 import { joinData } from '@/data/join';
 
-
 export default function JoinSection() {
   return <>
     <section id="join" className={styles.joinSection}>

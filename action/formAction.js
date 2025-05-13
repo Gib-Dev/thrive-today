@@ -3,6 +3,24 @@ import sendEmail from "@/sendEmail";
 
 export async function submitForm(prevState, formData) {
 
+  state.success = false;
+        let errors = {};
+
+        if (!formData.get("name")) {
+            errors.name = "Le nom est requis.";
+        }
+
+        if (!formData.get("email") || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.get("email"))) {
+            errors.email = "Adresse e-mail invalide.";
+        }
+
+        if (!formData.get("message")) {
+            errors.message = "Le message est requis.";
+        }
+
+        if (Object.keys(errors).length > 0) {
+        return errors; // Retourne les erreurs sans recharger la page
+        }
   let nom = Object.fromEntries(formData).name
   let email = Object.fromEntries(formData).email
   let message = Object.fromEntries(formData).message
@@ -14,4 +32,6 @@ export async function submitForm(prevState, formData) {
     to: "ThriveTodayContact@gmail.com",
     from: process.env.EMAIL
   });
+  
+  return { success: true };
 }
