@@ -1,58 +1,70 @@
 /* Section Événements */
 .events-section {
-  padding: 40px 20px;
-  background-color: var(--gray-alpha-100);
-  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--color-dark); /* Fond sombre */
 }
 
 .section-title {
-  font-size: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  color: var(--color-white); /* Texte blanc */
 }
 
 .event-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Espacement amélioré */
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .event-card {
-  width: 300px;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.05); /* Fond de carte subtil */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Effet survol */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .event-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 2px solid var(--gray-alpha-200); /* Séparateur subtil */
-  border-radius: 10px 10px 0 0;
+}
+
+.event-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem;
+  color: var(--color-white);
+}
+
+.event-card p {
+  font-size: 1rem;
+  margin: 0 1rem 1.5rem 1rem;
+  color: #c4c4c4;
 }
 
 .event-link {
   display: inline-block;
-  margin-top: 10px;
-  color: var(--color-primary);
+  margin: 0 1rem 1.5rem 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
 }
 
 .event-link:hover {
-  color: var(--color-accent);
-  text-decoration: underline;
+  background-color: var(--color-secondary);
 }
 
 @media (max-width: 768px) {
@@ -63,5 +75,113 @@
 
   .eventCard {
     width: 90%;
+  }
+}
+
+.eventsSection {
+  padding: var(--section-margin) var(--spacing-xl);
+  background-color: var(--color-dark);
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-white);
+  font-family: 'Playfair Display', serif;
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--card-gap);
+}
+
+.eventCard {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eventCard:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.eventImage {
+  object-fit: cover;
+}
+
+.eventContent {
+  padding: 0;
+}
+
+.eventTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.eventDescription {
+  font-size: 1rem;
+  color: #a0a0a0;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.eventLink {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  margin-top: var(--spacing-md);
+}
+
+.eventLink:hover {
+  background-color: #5a52e0;
+}
+
+@media (max-width: 992px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .eventsSection {
+    padding: var(--section-margin-mobile) var(--spacing-md);
+  }
+  .eventsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .eventCard {
+    padding: var(--spacing-lg);
   }
 }

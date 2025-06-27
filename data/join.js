@@ -2,8 +2,8 @@
 // Ces données alimentent dynamiquement le composant JoinSection.
 
 export const joinData = {
-  title: "Rejoignez-nous", // Titre principal de la section
-  text: "Contactez-nous dès aujourd'hui pour une séance d'essai gratuite !", // Texte incitatif
-  buttonText: "Nous Contacter", // Texte du bouton d’appel à l’action
+  title: "Prêt à Transformer Votre Vie ?", // Titre principal de la section
+  text: "Rejoignez notre communauté de plus de 1500 membres et commencez votre voyage vers une vie plus saine dès aujourd'hui. Offre spéciale : 1er mois à -50% !", // Texte incitatif
+  buttonText: "Commencer Maintenant", // Texte du bouton d'appel à l'action
   buttonLink: "/contact", // Lien vers la page de contact
 };

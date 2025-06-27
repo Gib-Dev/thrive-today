@@ -30,3 +30,23 @@
     width: 100%;
   }
 }
+
+.homePage {
+  background-color: var(--color-dark);
+}
+
+.sectionWrapper {
+  margin-top: var(--section-margin);
+  margin-bottom: var(--section-margin);
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .sectionWrapper {
+    margin-top: var(--section-margin-mobile);
+    margin-bottom: var(--section-margin-mobile);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}

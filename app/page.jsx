@@ -1,39 +1,47 @@
 import './globals.css';
-import EventsSection from '@/components/EventsSection';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import JoinSection from '@/components/JoinSection';
-import { eventsData } from '@/data/events';
+import EventsSection from '../components/EventsSection';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import JoinSection from '../components/JoinSection';
+import PerformanceMetrics from '../components/PerformanceMetrics';
+import StatsSection from '../components/StatsSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import styles from './page.module.css';
+import { eventsData } from '../data/events';
 
 // Métadonnées de la page d'accueil
 export const metadata = {
-  title: "ThriveToday",
-  description: "Votre mentor pour une vie pleine d'énergies",
+  title: "Accueil",
+  description: "Transformez votre corps et votre esprit avec nos programmes de yoga, HIIT et arts martiaux. Rejoignez ThriveToday pour une vie plus saine et équilibrée.",
+  keywords: ["fitness", "yoga", "HIIT", "arts martiaux", "bien-être", "sport", "entraînement", "santé"],
+  openGraph: {
+    title: "ThriveToday - Votre mentor pour une vie pleine d'énergies",
+    description: "Transformez votre corps et votre esprit avec nos programmes de yoga, HIIT et arts martiaux.",
+    images: ['/hero-fitness.webp'],
+  },
 };
 
 export default function Accueil() {
   return (
-    <main>
-      {/* Section Héro avec image WebP optimisée */}
-      <HeroSection
-        title="Bienvenue chez ThriveToday"
-        subtitle="Transformez votre corps et votre esprit dans un environnement inspirant."
-        backgroundImage="/hero-fitness.webp"
-      />
+    <main className={styles.homePage}>
+      <HeroSection />
+      
+      <div className={styles.sectionWrapper}>
+        <AboutSection />
+      </div>
 
-      {/* Section À propos */}
-      <AboutSection
-        title="À propos de nous"
-        text="Chez ThriveToday, nous croyons en l'importance de la santé physique et mentale. Notre mission est d'offrir un environnement accueillant et des programmes adaptés à tous les niveaux."
-        imageSrc="/skretching.jpg"
-        link="/apropos"
-        linkText="Découvrir plus"
-      />
+      <div className={styles.sectionWrapper}>
+        <StatsSection />
+      </div>
+      
+      <div className={styles.sectionWrapper}>
+        <EventsSection events={eventsData} />
+      </div>
+      
+      <div className={styles.sectionWrapper}>
+        <TestimonialsSection />
+      </div>
 
-      {/* Liste des événements */}
-      <EventsSection events={eventsData} />
-
-      {/* Section Rejoindre */}
       <JoinSection />
     </main>
   );

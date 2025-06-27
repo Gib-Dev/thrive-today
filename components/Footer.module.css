@@ -1,8 +1,150 @@
 .footer {
-  background-color: #23272a;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-  border-top: 2px solid #6C63FF;
+  background-color: #121212;
+  color: #a0a0a0;
+  padding: 5rem 2rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  color: #a0a0a0;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.socialLinks a:hover {
+  color: var(--color-secondary);
+}
+
+.links h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li {
+  margin-bottom: 0.75rem;
+}
+
+.links a, .links li {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--color-white);
+}
+
+.bottomSection {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legalLinks a {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.legalLinks a:hover {
+  color: var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 15px 20px;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footerTitle {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .legalLinks {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialLinks {
+    gap: 10px;
+  }
+
+  .socialLink {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .contactItem {
+    font-size: 0.9rem;
+  }
+
+  .hourItem {
+    font-size: 0.9rem;
+  }
 }

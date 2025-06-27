@@ -1,5 +1,4 @@
-
-import styles from '@/components/Highlight.module.css';
+import styles from './Highlight.module.css';
 
 export default function Highlight({ children, author, color = 'var(--color-primary)'}) {
     return <>

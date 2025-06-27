@@ -1,15 +1,19 @@
 import Link from 'next/link';
 import styles from './JoinSection.module.css';
-import { joinData } from '@/data/join';
 
 export default function JoinSection() {
-  return <>
-    <section id="join" className={styles.joinSection}>
-      <h2>{joinData.title}</h2>
-      <p>{joinData.text}</p>
-      <Link href={joinData.buttonLink} className={styles.buttonLink}>
-        {joinData.buttonText}
-      </Link>
-    </section>
-  </>;
+    return (
+        <section className={styles.joinSection}>
+            <div className={styles.container}>
+                <h2 className={styles.title}>Prêt à Transformer Votre Vie ?</h2>
+                <p className={styles.subtitle}>
+                    Rejoignez notre communauté de plus de 1500 membres et commencez votre voyage vers une vie plus saine dès aujourd'hui.
+                </p>
+                <p className={styles.offer}>Offre spéciale : 1er mois à -20% !</p>
+                <Link href="/contact" className={styles.ctaButton}>
+                    Commencer Maintenant &rarr;
+                </Link>
+            </div>
+        </section>
+    );
 }

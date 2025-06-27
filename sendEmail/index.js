@@ -40,9 +40,9 @@ const createTransporter = async () => {
   };
 
 //Création de la fonction d'envoi d'email
-    const sendEmail = async (emailOptions) => {
+const sendEmail = async (emailOptions) => {
     let emailTransporter = await createTransporter();
     await emailTransporter.sendMail(emailOptions);
   };
 
-  export default sendEmail
+module.exports = sendEmail;

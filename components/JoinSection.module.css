@@ -1,41 +1,72 @@
 .joinSection {
+  padding: var(--section-margin) var(--spacing-xl);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-dark);
   text-align: center;
-  padding: 40px 20px;
-  margin-top: 6rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color: var(--color-white);
-  border-radius: 10px;
+  border-radius: 16px;
+  margin-bottom: var(--section-margin);
 }
 
-/* Bouton "Nous Contacter" */
-.buttonLink {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background-color: var(--color-white);
-  color: var(--color-primary);
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--card-padding);
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+}
+
+.subtitle {
   font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--spacing-md);
 }
 
-/* Interaction au survol */
-.buttonLink:hover {
+.offer {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: var(--button-padding);
+  font-size: 1.1rem;
+  font-weight: 700;
   background-color: var(--color-accent);
   color: var(--color-white);
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: var(--spacing-lg);
+  transition: background 0.2s, transform 0.18s;
+}
+
+.ctaButton:hover {
+  background-color: var(--color-secondary);
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .arrowIcon {
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
   .joinSection {
-    padding: 30px 20px;
+    padding: var(--section-margin-mobile) var(--spacing-md);
+    margin-bottom: var(--section-margin-mobile);
+  }
+  .container {
+    padding: var(--spacing-lg);
   }
 
-  .joinButton {
+  .join-button {
     display: block;
     margin: 20px auto;
     width: fit-content;

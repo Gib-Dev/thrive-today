@@ -1,10 +1,10 @@
 import Image from "next/image";
-import banner from '@/public/weight.jpg';
 import Link from 'next/link';
+import banner from '../public/weight.jpg';
 import styles from "./Banner.module.css";
 
 export default function Banner() {
-    return <>
+    return (
         <div className={styles.banner}>
             <Image
                 src={banner}
@@ -27,5 +27,5 @@ export default function Banner() {
                 </div>
             </div>
         </div>
-    </>
+    );
 }

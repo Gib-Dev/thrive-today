@@ -39,3 +39,316 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Styles pour la page Contact */
+
+.main {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-dark);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/hero-fitness.webp') center/cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contactSection {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .contactGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  color: #c4c4c4;
+  margin-bottom: 2rem;
+}
+
+.contactCards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactIcon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.contactDetails {
+  flex: 1;
+}
+
+.contactTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+}
+
+.contactValue {
+  font-size: 1.1rem;
+  color: #00d4aa;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.contactDescription {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.socialSection {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.1);
+}
+
+.socialTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialLink {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 212, 170, 0.3);
+}
+
+.formSection {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.1);
+}
+
+.mapSection {
+  padding: 4rem 2rem;
+  background-color: #000;
+  color: white;
+}
+
+.mapContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mapPlaceholder {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mapPlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 170, 0.1) 50%, transparent 70%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.mapContent {
+  position: relative;
+  z-index: 2;
+}
+
+.mapIcon {
+  font-size: 3rem;
+  color: #00d4aa;
+  margin-bottom: 20px;
+}
+
+.mapContent h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+}
+
+.mapContent p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contactCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .contactIcon {
+    margin: 0 auto;
+  }
+
+  .formSection {
+    padding: 30px 20px;
+  }
+
+  .mapPlaceholder {
+    padding: 40px 20px;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .contactCard {
+    padding: 20px;
+  }
+
+  .formSection {
+    padding: 25px 15px;
+  }
+
+  .mapPlaceholder {
+    padding: 30px 15px;
+  }
+
+  .mapContent h3 {
+    font-size: 1.5rem;
+  }
+
+  .mapContent p {
+    font-size: 1rem;
+  }
+}
