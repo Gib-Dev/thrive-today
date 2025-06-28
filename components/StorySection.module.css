@@ -1,0 +1,719 @@
+.storySection {
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+  padding: var(--section-margin) var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.storySection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.storyContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.storyHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.storyTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-lg);
+  font-family: 'Playfair Display', serif;
+  position: relative;
+}
+
+.storyTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--border-radius-full);
+}
+
+.storySubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-600);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.storyContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  margin-bottom: var(--spacing-3xl);
+  align-items: center;
+}
+
+.storyVisual {
+  position: relative;
+}
+
+/* Remove or comment out the problematic 3D transforms */
+/* .storyImageContainer {
+  perspective: 1000px;
+} */
+
+.storyImageContainer {
+  position: relative;
+  border-radius: var(--border-radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.storyImage {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: var(--border-radius-2xl);
+}
+
+.storyImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(16, 185, 129, 0.3));
+  border-radius: var(--border-radius-2xl);
+}
+
+.storyOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius-2xl);
+}
+
+.storyIcon {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.storyText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.storyStep {
+  position: relative;
+}
+
+.stepNumber {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.stepTitle {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-sm);
+  font-family: 'Playfair Display', serif;
+}
+
+.stepSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+}
+
+.stepDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-600);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+
+.stepProgress {
+  margin-top: var(--spacing-xl);
+}
+
+.progressDots {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.progressDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--border-radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.progressDot.active {
+  transform: scale(1.2);
+}
+
+.progressDot:hover {
+  transform: scale(1.3);
+}
+
+.storyControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.controlButton {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-full);
+  border: 2px solid var(--color-gray-300);
+  background: var(--color-white);
+  color: var(--color-gray-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.controlButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.playButton {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--border-radius-full);
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-normal);
+}
+
+.playButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.storyTimeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  border: 2px solid var(--color-gray-200);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.timelineItem.active {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.timelineItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.timelineMarker {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--border-radius-full);
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+.timelineContent {
+  flex: 1;
+}
+
+.timelineTitle {
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-base);
+}
+
+.timelineSubtitle {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .storyContent {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+  
+  .storyTimeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .storySection {
+    padding: var(--section-margin-mobile) var(--spacing-lg);
+  }
+  
+  .storyContent {
+    gap: var(--spacing-xl);
+  }
+  
+  .storyImage {
+    height: 300px;
+  }
+  
+  .storyIcon {
+    font-size: 3rem;
+  }
+  
+  .storyControls {
+    gap: var(--spacing-lg);
+  }
+  
+  .controlButton {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .playButton {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .storyTimeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .storySection {
+    padding: var(--section-margin-mobile) var(--spacing-md);
+  }
+  
+  .storyImage {
+    height: 250px;
+  }
+  
+  .storyIcon {
+    font-size: 2.5rem;
+  }
+  
+  .storyControls {
+    gap: var(--spacing-md);
+  }
+  
+  .controlButton {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .playButton {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .timelineItem {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Animations spéciales */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.timelineItem.active .timelineMarker {
+  animation: pulse 2s infinite;
+}
+
+/* Effets de glassmorphism pour les contrôles */
+.controlButton {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.playButton {
+  backdrop-filter: blur(10px);
+}
+
+/* Remove translateZ properties if present */
+/* .storyImage, .storyImageContainer {
+  transform: translateZ(0);
+} */
+
+/* Animations CSS pour remplacer Framer Motion */
+.animating {
+  animation: slideTransition 0.6s ease-out;
+}
+
+@keyframes slideTransition {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Animation pour les images */
+.storyImageContainer {
+  transition: all 0.6s ease-out;
+}
+
+.storyImageContainer.animating {
+  animation: imageSlide 0.6s ease-out;
+}
+
+@keyframes imageSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Animation pour les textes */
+.storyStep {
+  transition: all 0.6s ease-out;
+}
+
+.storyStep.animating {
+  animation: textSlide 0.6s ease-out;
+}
+
+@keyframes textSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation pour les boutons de contrôle */
+.controlButton {
+  transition: all 0.2s ease-in-out;
+}
+
+.controlButton:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.controlButton:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.controlButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animation pour le bouton play */
+.playButton {
+  transition: all 0.2s ease-in-out;
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+}
+
+.playButton:active {
+  transform: scale(0.9);
+}
+
+/* Animation pour les points de progression */
+.progressDot {
+  transition: all 0.3s ease-in-out;
+}
+
+.progressDot:hover {
+  transform: scale(1.2);
+}
+
+.progressDot.active {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Animation pour les éléments de timeline */
+.timelineItem {
+  transition: all 0.3s ease-in-out;
+}
+
+.timelineItem:hover {
+  transform: scale(1.05);
+}
+
+.timelineItem.active {
+  animation: timelinePulse 2s ease-in-out infinite;
+}
+
+@keyframes timelinePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Animation pour les marqueurs de timeline */
+.timelineMarker {
+  transition: all 0.3s ease-in-out;
+}
+
+.timelineItem:hover .timelineMarker {
+  transform: scale(1.2);
+}
+
+/* Animation pour l'icône de l'histoire */
+.storyIcon {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyIcon:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Animation pour les titres */
+.stepTitle {
+  transition: color 0.3s ease-in-out;
+}
+
+.stepTitle:hover {
+  color: var(--color-accent);
+}
+
+/* Animation pour les sous-titres */
+.stepSubtitle {
+  transition: transform 0.3s ease-in-out;
+}
+
+.stepSubtitle:hover {
+  transform: translateX(5px);
+}
+
+/* Animation pour les descriptions */
+.stepDescription {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.stepDescription:hover {
+  opacity: 0.9;
+}
+
+/* Animation pour les numéros d'étape */
+.stepNumber {
+  transition: all 0.3s ease-in-out;
+}
+
+.stepNumber:hover {
+  transform: scale(1.1);
+  color: var(--color-accent);
+}
+
+/* Animation pour les titres de timeline */
+.timelineTitle {
+  transition: color 0.3s ease-in-out;
+}
+
+.timelineItem:hover .timelineTitle {
+  color: var(--color-accent);
+}
+
+/* Animation pour les sous-titres de timeline */
+.timelineSubtitle {
+  transition: transform 0.3s ease-in-out;
+}
+
+.timelineItem:hover .timelineSubtitle {
+  transform: translateX(3px);
+}
+
+/* Animation pour l'overlay de l'image */
+.storyOverlay {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyImage:hover .storyOverlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Animation pour les contrôles au hover */
+.storyControls {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyControls:hover {
+  transform: translateY(-2px);
+}
+
+/* Animation pour la progression */
+.stepProgress {
+  transition: all 0.3s ease-in-out;
+}
+
+.stepProgress:hover {
+  transform: scale(1.02);
+}
+
+/* Animation pour les dots de progression */
+.progressDots {
+  transition: all 0.3s ease-in-out;
+}
+
+.progressDots:hover {
+  transform: scale(1.05);
+}
+
+/* Animation pour le contenu de l'histoire */
+.storyContent {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyContent:hover {
+  transform: translateY(-2px);
+}
+
+/* Animation pour l'en-tête de l'histoire */
+.storyHeader {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyHeader:hover {
+  transform: translateY(-1px);
+}
+
+/* Animation pour le titre principal */
+.storyTitle {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyTitle:hover {
+  color: var(--color-accent);
+}
+
+/* Animation pour le sous-titre principal */
+.storySubtitle {
+  transition: all 0.3s ease-in-out;
+}
+
+.storySubtitle:hover {
+  transform: translateX(5px);
+}
+
+/* Animation pour la timeline */
+.storyTimeline {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyTimeline:hover {
+  transform: translateY(-1px);
+}
+
+/* Animation pour le conteneur principal */
+.storyContainer {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyContainer:hover {
+  transform: scale(1.01);
+}
+
+/* Animation pour les éléments visuels */
+.storyVisual {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyVisual:hover {
+  transform: scale(1.02);
+}
+
+/* Animation pour les textes */
+.storyText {
+  transition: all 0.3s ease-in-out;
+}
+
+.storyText:hover {
+  transform: translateX(2px);
+} 

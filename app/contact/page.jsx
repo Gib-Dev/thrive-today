@@ -16,24 +16,28 @@ export const metadata = {
 export default function Contact() {
   const contactInfo = [
     {
+      id: 'phone',
       icon: FaPhone,
       title: "Téléphone",
       value: "+33 1 23 45 67 89",
       description: "Appelez-nous du lundi au vendredi"
     },
     {
+      id: 'email',
       icon: FaEnvelope,
       title: "Email",
       value: "contact@thrivetoday.fr",
       description: "Réponse sous 24h"
     },
     {
+      id: 'address',
       icon: FaMapMarkerAlt,
       title: "Adresse",
       value: "123 Rue du Sport, 75001 Paris",
       description: "Métro : Châtelet (lignes 1, 4, 7, 11, 14)"
     },
     {
+      id: 'hours',
       icon: FaClock,
       title: "Horaires",
       value: "Lun-Ven: 6h-22h | Sam: 8h-20h | Dim: 9h-18h",
@@ -42,9 +46,9 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { icon: FaFacebook, name: "Facebook", url: "#" },
-    { icon: FaInstagram, name: "Instagram", url: "#" },
-    { icon: FaTwitter, name: "Twitter", url: "#" }
+    { id: 'facebook', icon: FaFacebook, name: "Facebook", url: "#" },
+    { id: 'instagram', icon: FaInstagram, name: "Instagram", url: "#" },
+    { id: 'twitter', icon: FaTwitter, name: "Twitter", url: "#" }
   ];
 
   return (
@@ -71,8 +75,8 @@ export default function Contact() {
               </p>
               
               <div className={styles.contactCards}>
-                {contactInfo.map((info, index) => (
-                  <div key={index} className={styles.contactCard}>
+                {contactInfo.map((info) => (
+                  <div key={info.id} className={styles.contactCard}>
                     <div className={styles.contactIcon}>
                       <info.icon />
                     </div>
@@ -89,9 +93,9 @@ export default function Contact() {
               <div className={styles.socialSection}>
                 <h3 className={styles.socialTitle}>Suivez-nous</h3>
                 <div className={styles.socialLinks}>
-                  {socialLinks.map((social, index) => (
+                  {socialLinks.map((social) => (
                     <a
-                      key={index}
+                      key={social.id}
                       href={social.url}
                       className={styles.socialLink}
                       aria-label={social.name}

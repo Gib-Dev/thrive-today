@@ -1,0 +1,758 @@
+.progressTracker {
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+  padding: var(--section-margin) var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressTracker::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.progressContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.progressTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-lg);
+  font-family: 'Playfair Display', serif;
+  position: relative;
+}
+
+.progressTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--border-radius-full);
+}
+
+.progressSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-3xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Niveau actuel */
+.currentLevel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+  flex-wrap: wrap;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-full);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.levelBadge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-slow);
+}
+
+.levelBadge:hover::before {
+  left: 100%;
+}
+
+.levelIcon {
+  font-size: var(--font-size-xl);
+}
+
+.levelProgress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 200px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: var(--color-gray-200);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--border-radius-full);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progressText {
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 40px;
+}
+
+/* Badges */
+.badgesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  border: 2px solid var(--color-gray-200);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.badge.unlocked {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.badge.locked {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.badgeIcon {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.badgeLabel {
+  font-weight: 600;
+  color: var(--color-gray-700);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.badgeGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-xl);
+  pointer-events: none;
+}
+
+/* Achievements */
+.achievementsSection {
+  margin-top: var(--spacing-3xl);
+}
+
+.achievementsTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-xl);
+  font-family: 'Playfair Display', serif;
+}
+
+.achievementsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  border: 2px solid var(--color-gray-200);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement.unlocked {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.achievement.locked {
+  opacity: 0.6;
+  filter: grayscale(0.5);
+}
+
+.achievementIcon {
+  font-size: var(--font-size-2xl);
+  min-width: 40px;
+  text-align: center;
+}
+
+.achievementContent {
+  flex: 1;
+}
+
+.achievementTitle {
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-base);
+}
+
+.achievementDescription {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.achievementCheck {
+  width: 24px;
+  height: 24px;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+/* Notification d'achievement */
+.achievementNotification {
+  position: fixed;
+  top: 100px;
+  right: var(--spacing-xl);
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
+  border: 2px solid var(--color-secondary);
+  z-index: var(--z-modal);
+  overflow: hidden;
+  min-width: 300px;
+}
+
+.notificationContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.notificationIcon {
+  font-size: var(--font-size-2xl);
+  min-width: 40px;
+  text-align: center;
+}
+
+.notificationText h4 {
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-base);
+}
+
+.notificationText p {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.notificationProgress {
+  height: 4px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .badgesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .achievementsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .progressTracker {
+    padding: var(--section-margin-mobile) var(--spacing-lg);
+  }
+  
+  .currentLevel {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .levelProgress {
+    min-width: 100%;
+  }
+  
+  .badgesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .achievementsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievementNotification {
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressTracker {
+    padding: var(--section-margin-mobile) var(--spacing-md);
+  }
+  
+  .badgesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .badge {
+    padding: var(--spacing-md);
+  }
+  
+  .achievement {
+    padding: var(--spacing-md);
+  }
+  
+  .achievementNotification {
+    top: 80px;
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
+  }
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+/* Animations CSS pour remplacer Framer Motion */
+.animateIn {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animateProgress {
+  animation: progressFill 1s ease-out 0.5s forwards;
+}
+
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+/* Animation pour les badges */
+.badge {
+  transition: all 0.3s ease-in-out;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+.badge.unlocked {
+  animation: badgeUnlock 0.6s ease-out forwards;
+}
+
+@keyframes badgeUnlock {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animation pour le glow des badges */
+.badgeGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  animation: badgeGlowPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes badgeGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Animation pour les achievements */
+.achievement {
+  transition: all 0.3s ease-in-out;
+}
+
+.achievement:hover {
+  transform: scale(1.05);
+}
+
+.achievement.unlocked {
+  animation: achievementUnlock 0.6s ease-out forwards;
+}
+
+@keyframes achievementUnlock {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation pour les checks */
+.achievementCheck {
+  animation: checkPop 0.4s ease-out forwards;
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation pour la notification */
+.achievementNotification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.achievementNotification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notificationContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.notificationIcon {
+  font-size: 2rem;
+}
+
+.notificationText h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.notificationText p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.notificationProgress {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.notificationProgress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: white;
+  animation: progressBar 3s linear forwards;
+}
+
+@keyframes progressBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Animation pour le niveau */
+.levelBadge {
+  animation: levelPop 0.6s ease-out forwards;
+}
+
+@keyframes levelPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation pour la barre de progression */
+.progressFill {
+  transition: width 1s ease-out 0.5s;
+}
+
+/* Animation pour les éléments au hover */
+.levelBadge:hover {
+  transform: scale(1.05);
+}
+
+.achievement:hover {
+  transform: scale(1.02);
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+/* Animation pour les icônes */
+.levelIcon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.levelBadge:hover .levelIcon {
+  transform: rotate(360deg);
+}
+
+.badgeIcon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.badge:hover .badgeIcon {
+  transform: scale(1.2);
+}
+
+.achievementIcon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.achievement:hover .achievementIcon {
+  transform: scale(1.1);
+}
+
+/* Animation pour les titres */
+.progressTitle {
+  transition: color 0.3s ease-in-out;
+}
+
+.progressTitle:hover {
+  color: var(--color-accent);
+}
+
+.achievementsTitle {
+  transition: color 0.3s ease-in-out;
+}
+
+.achievementsTitle:hover {
+  color: var(--color-accent);
+}
+
+/* Animation pour les descriptions */
+.progressSubtitle {
+  transition: transform 0.3s ease-in-out;
+}
+
+.progressSubtitle:hover {
+  transform: translateX(5px);
+}
+
+.achievementDescription {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.achievement:hover .achievementDescription {
+  opacity: 0.8;
+}
+
+/* Animation pour les titres d'achievement */
+.achievementTitle {
+  transition: color 0.3s ease-in-out;
+}
+
+.achievement:hover .achievementTitle {
+  color: var(--color-accent);
+}
+
+/* Animation pour les badges labels */
+.badgeLabel {
+  transition: transform 0.3s ease-in-out;
+}
+
+.badge:hover .badgeLabel {
+  transform: translateY(-2px);
+}
+
+/* Animation pour le conteneur principal */
+.progressContainer {
+  transition: all 0.3s ease-in-out;
+}
+
+.progressContainer:hover {
+  transform: translateY(-2px);
+}
+
+/* Animation pour la section des achievements */
+.achievementsSection {
+  transition: all 0.3s ease-in-out;
+}
+
+.achievementsSection:hover {
+  transform: translateY(-1px);
+}
+
+/* Animation pour la grille des badges */
+.badgesGrid {
+  transition: all 0.3s ease-in-out;
+}
+
+.badgesGrid:hover {
+  transform: scale(1.01);
+}
+
+/* Animation pour la grille des achievements */
+.achievementsGrid {
+  transition: all 0.3s ease-in-out;
+}
+
+.achievementsGrid:hover {
+  transform: scale(1.01);
+}
+
+/* Animation pour le niveau actuel */
+.currentLevel {
+  transition: all 0.3s ease-in-out;
+}
+
+.currentLevel:hover {
+  transform: translateY(-2px);
+}
+
+/* Animation pour la barre de progression */
+.levelProgress {
+  transition: all 0.3s ease-in-out;
+}
+
+.levelProgress:hover {
+  transform: scale(1.02);
+}
+
+/* Animation pour le texte de progression */
+.progressText {
+  transition: all 0.3s ease-in-out;
+}
+
+.progressText:hover {
+  color: var(--color-accent);
+  transform: scale(1.1);
+} 

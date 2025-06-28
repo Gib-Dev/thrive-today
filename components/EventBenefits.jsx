@@ -15,7 +15,7 @@ export default function EventBenefits({ benefits }) {
             {/* Affichage des bénéfices sous forme de cartes */}
             <div className={styles.benefitGrid}>
                 {benefits.map((benefit, index) => (
-                    <div key={index} className={styles.benefitCard}>
+                    <div key={benefit.id || `${benefit.title}-${index}`} className={styles.benefitCard}>
                         <div className={styles.benefitIcon}>{benefit.icon}</div>
                         <h3>{benefit.title}</h3>
                         <p>{benefit.description}</p>

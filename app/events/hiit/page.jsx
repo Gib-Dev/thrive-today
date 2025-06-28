@@ -33,31 +33,37 @@ const hiitEvent = {
   // Avantages listés sous forme de tableau pour affichage structuré
   benefits: [
     { 
+      id: 'intensive-burning',
       icon: FaFire, 
       title: "Brûlage Intensif", 
       description: "Jusqu'à 30% de calories en plus qu'un entraînement traditionnel grâce à l'effet afterburn" 
     },
     { 
+      id: 'max-efficiency',
       icon: FaBolt, 
       title: "Efficacité Maximale", 
       description: "Résultats visibles en seulement 20-30 minutes par session, 3 fois par semaine" 
     },
     { 
+      id: 'adaptable',
       icon: FaDumbbell, 
       title: "Adaptable", 
       description: "Pour tous les niveaux, débutants comme confirmés avec des variations personnalisées" 
     },
     { 
+      id: 'cardio-strength',
       icon: FaHeart, 
       title: "Cardio Renforcé", 
       description: "Améliorez significativement votre condition cardiovasculaire et votre endurance" 
     },
     { 
+      id: 'explosive-strength',
       icon: FaDumbbell, 
       title: "Force Explosive", 
       description: "Développez votre puissance musculaire et votre explosivité" 
     },
     { 
+      id: 'boosted-metabolism',
       icon: FaFire, 
       title: "Métabolisme Boosté", 
       description: "Accélérez votre métabolisme pour brûler plus de calories même au repos" 
@@ -67,31 +73,37 @@ const hiitEvent = {
   // Programme détaillé
   program: [
     {
+      id: 'dynamic-warmup',
       time: "0-10 min",
       activity: "Échauffement Dynamique",
       description: "Mobilisation articulaire et activation musculaire progressive"
     },
     {
+      id: 'hiit-rounds',
       time: "10-15 min",
       activity: "Rounds HIIT",
       description: "6 rounds de 30s travail / 30s repos avec exercices variés"
     },
     {
+      id: 'intensive-circuit',
       time: "15-25 min",
       activity: "Circuit Intensif",
       description: "4 exercices en circuit, 45s chacun, 15s de repos"
     },
     {
+      id: 'tabata-protocol',
       time: "25-35 min",
       activity: "Tabata Protocol",
       description: "8 rounds de 20s travail / 10s repos - intensité maximale"
     },
     {
+      id: 'finisher',
       time: "35-40 min",
       activity: "Finisher",
       description: "Exercice final intense pour maximiser l'effet afterburn"
     },
     {
+      id: 'active-recovery',
       time: "40-45 min",
       activity: "Récupération Active",
       description: "Étirements dynamiques et retour au calme"
@@ -204,8 +216,8 @@ export default function HIITEventPage() {
             Pourquoi choisir cet événement ?
           </h2>
           <div className={styles.benefitsGrid}>
-            {hiitEvent.benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
+            {hiitEvent.benefits.map((benefit) => (
+              <div key={benefit.id} className={styles.benefitCard}>
                 <div className={styles.benefitIcon}>
                   <benefit.icon />
                 </div>
@@ -259,8 +271,8 @@ export default function HIITEventPage() {
             Programme de la Séance
           </h2>
           <div className={styles.programGrid}>
-            {hiitEvent.program.map((item, index) => (
-              <div key={index} className={styles.programItem}>
+            {hiitEvent.program.map((item) => (
+              <div key={item.id} className={styles.programItem}>
                 <div className={styles.programContent}>
                   <div className={styles.programTime}>{item.time}</div>
                   <div>

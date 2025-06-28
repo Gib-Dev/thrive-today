@@ -6,6 +6,9 @@ import JoinSection from '../components/JoinSection';
 import PerformanceMetrics from '../components/PerformanceMetrics';
 import StatsSection from '../components/StatsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
+import ProgressTracker from '../components/ProgressTracker';
+import StorySection from '../components/StorySection';
+import SmartCTA from '../components/SmartCTA';
 import styles from './page.module.css';
 import { eventsData } from '../data/events';
 
@@ -25,23 +28,13 @@ export default function Accueil() {
   return (
     <main className={styles.homePage}>
       <HeroSection />
-      
-      <div className={styles.sectionWrapper}>
-        <AboutSection />
-      </div>
-
-      <div className={styles.sectionWrapper}>
-        <StatsSection />
-      </div>
-      
-      <div className={styles.sectionWrapper}>
-        <EventsSection events={eventsData} />
-      </div>
-      
-      <div className={styles.sectionWrapper}>
-        <TestimonialsSection />
-      </div>
-
+      <AboutSection />
+      <StorySection />
+      <StatsSection />
+      <EventsSection events={eventsData} />
+      <ProgressTracker />
+      <TestimonialsSection />
+      <SmartCTA />
       <JoinSection />
     </main>
   );

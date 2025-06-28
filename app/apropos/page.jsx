@@ -18,21 +18,25 @@ export const metadata = {
 export default function Apropos() {
   const values = [
     {
+      id: 'passion',
       icon: FaHeart,
       title: "Passion",
       description: "Nous sommes passionnés par votre bien-être et votre réussite"
     },
     {
+      id: 'community',
       icon: FaUsers,
       title: "Communauté",
       description: "Une communauté bienveillante de plus de 1500 membres"
     },
     {
+      id: 'excellence',
       icon: FaTrophy,
       title: "Excellence",
       description: "15 ans d&apos;expertise et de résultats prouvés"
     },
     {
+      id: 'natural',
       icon: FaLeaf,
       title: "Naturel",
       description: "Approche holistique respectueuse de votre corps"
@@ -41,24 +45,28 @@ export default function Apropos() {
 
   const achievements = [
     {
+      id: 'specialized-programs',
       icon: FaDumbbell,
       number: "50+",
       label: "Programmes Spécialisés",
       description: "Yoga, HIIT, Arts Martiaux et plus"
     },
     {
+      id: 'years-experience',
       icon: FaMedal,
       number: "15",
       label: "Années d&apos;Expérience",
       description: "Expertise reconnue dans le fitness"
     },
     {
+      id: 'support-available',
       icon: FaClock,
       number: "24/7",
       label: "Support Disponible",
       description: "Accompagnement personnalisé"
     },
     {
+      id: 'client-satisfaction',
       icon: FaStar,
       number: "98%",
       label: "Satisfaction Client",
@@ -108,8 +116,8 @@ export default function Apropos() {
                 scientifique et bienveillance humaine pour des résultats durables.
               </p>
               <div className={styles.valuesGrid}>
-                {values.map((value, index) => (
-                  <div key={index} className={styles.valueCard}>
+                {values.map((value) => (
+                  <div key={value.id} className={styles.valueCard}>
                     <div className={styles.valueIcon}>
                       <value.icon />
                     </div>
@@ -141,8 +149,8 @@ export default function Apropos() {
             Des chiffres qui parlent d&apos;eux-mêmes
           </p>
           <div className={styles.achievementsGrid}>
-            {achievements.map((achievement, index) => (
-              <div key={index} className={styles.achievementCard}>
+            {achievements.map((achievement) => (
+              <div key={achievement.id} className={styles.achievementCard}>
                 <div className={styles.achievementIcon}>
                   <achievement.icon />
                 </div>

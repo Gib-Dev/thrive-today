@@ -182,4 +182,12 @@
   .value {
     font-size: 1.8rem;
   }
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-gray-500);
+  font-style: italic;
 } 

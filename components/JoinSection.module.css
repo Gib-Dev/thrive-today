@@ -1,74 +1,134 @@
 .joinSection {
   padding: var(--section-margin) var(--spacing-xl);
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  color: var(--color-dark);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
   text-align: center;
-  border-radius: 16px;
-  margin-bottom: var(--section-margin);
+  position: relative;
+  overflow: hidden;
+  margin: var(--section-margin) var(--spacing-xl);
+  border-radius: var(--border-radius-2xl);
+}
+
+.joinSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: var(--card-padding);
+  padding: var(--spacing-2xl);
+  position: relative;
+  z-index: 1;
 }
 
 .title {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
   margin-bottom: var(--spacing-lg);
+  color: var(--color-white);
+  font-family: 'Playfair Display', serif;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
 }
 
 .offer {
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-dark);
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-white);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-xl);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .ctaButton {
-  display: inline-block;
-  padding: var(--button-padding);
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-size-lg);
   font-weight: 700;
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  border-radius: 50px;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--border-radius-full);
   text-decoration: none;
   margin-top: var(--spacing-lg);
-  transition: background 0.2s, transform 0.18s;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid transparent;
 }
 
 .ctaButton:hover {
-  background-color: var(--color-secondary);
-  transform: scale(1.05);
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
 }
 
 .arrowIcon {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-normal);
 }
 
 .ctaButton:hover .arrowIcon {
   transform: translateX(5px);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .joinSection {
-    padding: var(--section-margin-mobile) var(--spacing-md);
-    margin-bottom: var(--section-margin-mobile);
+    padding: var(--section-margin-mobile) var(--spacing-lg);
+    margin: var(--section-margin-mobile) var(--spacing-lg);
   }
+  
+  .container {
+    padding: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .offer {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md);
+  }
+  
+  .ctaButton {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .joinSection {
+    margin: var(--section-margin-mobile) var(--spacing-md);
+  }
+  
   .container {
     padding: var(--spacing-lg);
   }
-
-  .join-button {
-    display: block;
-    margin: 20px auto;
-    width: fit-content;
+  
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -26,31 +26,37 @@ const martialEvent = {
   maxParticipants: 10,
   benefits: [
     { 
+      id: 'self-defense',
       icon: FaFistRaised, 
       title: "Autodéfense", 
       description: "Apprenez des techniques efficaces pour vous protéger et protéger vos proches" 
     },
     { 
+      id: 'confidence',
       icon: FaShieldAlt, 
       title: "Confiance", 
       description: "Développez votre confiance en vous et votre assurance personnelle" 
     },
     { 
+      id: 'physical-strength',
       icon: FaDumbbell, 
       title: "Force Physique", 
       description: "Renforcez vos muscles et améliorez votre condition physique globale" 
     },
     { 
+      id: 'discipline',
       icon: FaHeart, 
       title: "Discipline", 
       description: "Cultivez la discipline mentale et la persévérance" 
     },
     { 
+      id: 'reflexes',
       icon: FaBolt, 
       title: "Réflexes", 
       description: "Améliorez vos réflexes et votre coordination motrice" 
     },
     { 
+      id: 'respect',
       icon: FaStar, 
       title: "Respect", 
       description: "Apprenez les valeurs traditionnelles de respect et d'humilité" 
@@ -58,31 +64,37 @@ const martialEvent = {
   ],
   program: [
     {
+      id: 'warmup',
       time: "0-15 min",
       activity: "Échauffement",
       description: "Mobilisation articulaire et préparation physique progressive"
     },
     {
+      id: 'basic-techniques',
       time: "15-30 min",
       activity: "Techniques de Base",
       description: "Apprentissage des positions et mouvements fondamentaux"
     },
     {
+      id: 'kata-applications',
       time: "30-60 min",
       activity: "Kata & Applications",
       description: "Pratique des formes traditionnelles et leurs applications"
     },
     {
+      id: 'controlled-sparring',
       time: "60-75 min",
       activity: "Sparring Contrôlé",
       description: "Combat d'entraînement avec partenaire sous supervision"
     },
     {
+      id: 'conditioning',
       time: "75-85 min",
       activity: "Conditionnement",
       description: "Exercices de renforcement et d'endurance"
     },
     {
+      id: 'meditation',
       time: "85-90 min",
       activity: "Méditation",
       description: "Retour au calme et méditation pour intégrer l'enseignement"
@@ -180,8 +192,8 @@ export default function MartialArtsEventPage() {
             Pourquoi choisir cet événement ?
           </h2>
           <div className={styles.benefitsGrid}>
-            {martialEvent.benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
+            {martialEvent.benefits.map((benefit) => (
+              <div key={benefit.id} className={styles.benefitCard}>
                 <div className={styles.benefitIcon}>
                   <benefit.icon />
                 </div>
@@ -233,8 +245,8 @@ export default function MartialArtsEventPage() {
             Programme de la Séance
           </h2>
           <div className={styles.programGrid}>
-            {martialEvent.program.map((item, index) => (
-              <div key={index} className={styles.programItem}>
+            {martialEvent.program.map((item) => (
+              <div key={item.id} className={styles.programItem}>
                 <div className={styles.programContent}>
                   <div className={styles.programTime}>{item.time}</div>
                   <div>

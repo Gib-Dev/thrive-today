@@ -33,31 +33,37 @@ const yogaEvent = {
   // Avantages listés sous forme de tableau pour affichage structuré
   benefits: [
     { 
+      id: 'flexibility',
       icon: FaLeaf, 
       title: "Flexibilité", 
       description: "Améliorez progressivement votre souplesse et votre amplitude de mouvement" 
     },
     { 
+      id: 'stress-reduction',
       icon: FaHeart, 
       title: "Réduction du Stress", 
       description: "Techniques de respiration et méditation pour un esprit apaisé" 
     },
     { 
+      id: 'balance',
       icon: FaBalanceScale, 
       title: "Équilibre", 
       description: "Renforcez votre stabilité physique et mentale" 
     },
     { 
+      id: 'vital-energy',
       icon: FaSun, 
       title: "Énergie Vitale", 
       description: "Stimulez votre énergie intérieure et votre vitalité" 
     },
     { 
+      id: 'better-sleep',
       icon: FaMoon, 
       title: "Sommeil Amélioré", 
       description: "Pratiques du soir pour un sommeil plus profond et réparateur" 
     },
     { 
+      id: 'body-awareness',
       icon: FaPeace, 
       title: "Conscience Corporelle", 
       description: "Développez une meilleure connexion avec votre corps" 
@@ -67,26 +73,31 @@ const yogaEvent = {
   // Programme détaillé
   program: [
     {
+      id: 'pranayama',
       time: "0-10 min",
       activity: "Pranayama",
       description: "Techniques de respiration pour centrer l'esprit et préparer le corps"
     },
     {
+      id: 'surya-namaskar',
       time: "10-25 min",
       activity: "Surya Namaskar",
       description: "Salutation au soleil pour échauffer et dynamiser le corps"
     },
     {
+      id: 'asanas',
       time: "25-50 min",
       activity: "Asanas",
       description: "Postures de yoga adaptées au niveau de chacun"
     },
     {
+      id: 'meditation',
       time: "50-65 min",
       activity: "Méditation",
       description: "Pratique de pleine conscience et relaxation profonde"
     },
     {
+      id: 'savasana',
       time: "65-75 min",
       activity: "Savasana",
       description: "Corpse pose - relaxation finale pour intégrer les bienfaits"
@@ -196,8 +207,8 @@ export default function YogaEventPage() {
             Pourquoi choisir cet événement ?
           </h2>
           <div className={styles.benefitsGrid}>
-            {yogaEvent.benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
+            {yogaEvent.benefits.map((benefit) => (
+              <div key={benefit.id} className={styles.benefitCard}>
                 <div className={styles.benefitIcon}>
                   <benefit.icon />
                 </div>
@@ -251,8 +262,8 @@ export default function YogaEventPage() {
             Programme de la Séance
           </h2>
           <div className={styles.programGrid}>
-            {yogaEvent.program.map((item, index) => (
-              <div key={index} className={styles.programItem}>
+            {yogaEvent.program.map((item) => (
+              <div key={item.id} className={styles.programItem}>
                 <div className={styles.programContent}>
                   <div className={styles.programTime}>{item.time}</div>
                   <div>

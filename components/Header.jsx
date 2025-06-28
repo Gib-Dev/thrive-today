@@ -1,106 +1,246 @@
 'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import styles from "./Header.module.css";
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { FaBars, FaTimes, FaPhone, FaEnvelope } from 'react-icons/fa';
+import styles from './Header.module.css';
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef(null);
+  const firstEl = useRef(null);
+  const lastEl = useRef(null);
 
   const isLinkActive = (href) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+    return pathname === href;
   };
 
-  // Fermer le menu mobile sur navigation, clic extérieur, touche Esc, et focus trap
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        const scrolled = window.scrollY > 50;
+        setIsScrolled(scrolled);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted || !isMenuOpen) return;
+
     const handleClickOutside = (event) => {
-      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
       }
     };
+
     const handleEsc = (event) => {
-      if (menuOpen && event.key === 'Escape') {
-        setMenuOpen(false);
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
       }
     };
+
     const trapFocus = (event) => {
-      if (menuOpen && menuRef.current) {
-        const focusableEls = menuRef.current.querySelectorAll('a, button');
-        const firstEl = focusableEls[0];
-        const lastEl = focusableEls[focusableEls.length - 1];
-        if (event.key === 'Tab') {
-          if (event.shiftKey) {
-            if (document.activeElement === firstEl) {
-              event.preventDefault();
-              lastEl.focus();
-            }
-          } else {
-            if (document.activeElement === lastEl) {
-              event.preventDefault();
-              firstEl.focus();
-            }
+      if (event.key === 'Tab') {
+        if (event.shiftKey) {
+          if (document.activeElement === firstEl.current) {
+            event.preventDefault();
+            lastEl.current?.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl.current) {
+            event.preventDefault();
+            firstEl.current?.focus();
           }
         }
       }
     };
-    if (menuOpen) {
+
+    if (typeof document !== 'undefined') {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleEsc);
       document.addEventListener('keydown', trapFocus);
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEsc);
-      document.removeEventListener('keydown', trapFocus);
-      document.body.style.overflow = '';
-    };
-  }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleEsc);
+        document.removeEventListener('keydown', trapFocus);
+        document.body.style.overflow = '';
+      };
+    }
+  }, [isMenuOpen, mounted]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const navItems = [
+    { href: '/', label: 'Accueil' },
+    { href: '/events', label: 'Événements' },
+    { href: '/apropos', label: 'À propos' },
+    { href: '/contact', label: 'Contact' }
+  ];
+
+  // Rendu côté serveur sans les états dynamiques
+  if (!mounted) {
+    return (
+      <header className={styles.header}>
+        <div className={styles.navContainer}>
+          <Link href="/" className={styles.logo} aria-label="Accueil ThriveToday">
+            <img src="/logo.png" alt="ThriveToday Logo" />
+            <span className={styles.logoText}>ThriveToday</span>
+          </Link>
+
+          <nav className={styles.desktopNav} role="navigation" aria-label="Menu principal">
+            <ul className={styles.desktopNavList}>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link 
+                    href={item.href} 
+                    className={`${styles.desktopNavLink} ${isLinkActive(item.href) ? styles.active : ''}`} 
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className={styles.contactInfo}>
+            <a href="tel:+33123456789" className={styles.contactLink}>
+              <FaPhone />
+              <span>+33 1 23 45 67 89</span>
+            </a>
+            <a href="mailto:contact@thrivetoday.fr" className={styles.contactLink}>
+              <FaEnvelope />
+              <span>contact@thrivetoday.fr</span>
+            </a>
+          </div>
+
+          <button className={styles.mobileMenuButton} aria-label="Menu">
+            <FaBars />
+          </button>
+        </div>
+      </header>
+    );
+  }
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.navContainer}>
         <Link href="/" className={styles.logo} aria-label="Accueil ThriveToday" onClick={closeMenu}>
-          <Image src="/logo.png" alt="ThriveToday Logo" width={50} height={50} />
+          <img src="/logo.png" alt="ThriveToday Logo" />
+          <span className={styles.logoText}>ThriveToday</span>
         </Link>
-        {/* Overlay mobile */}
-        {menuOpen && <div className={styles.mobileOverlay} onClick={closeMenu} aria-hidden="true"></div>}
-        <nav
-          ref={menuRef}
-          className={`${styles.navListWrapper} ${menuOpen ? styles.open : ''}`}
-          role="navigation"
-          aria-label="Menu principal"
-        >
-          <ul className={styles.navList}>
-            <li><Link href="/" className={`${styles.navLink} ${isLinkActive('/') ? styles.active : ''}`} onClick={closeMenu}>Accueil</Link></li>
-            <li><Link href="/apropos" className={`${styles.navLink} ${isLinkActive('/apropos') ? styles.active : ''}`} onClick={closeMenu}>À propos</Link></li>
-            <li><Link href="/events/yoga" className={`${styles.navLink} ${isLinkActive('/events/yoga') ? styles.active : ''}`} onClick={closeMenu}>Yoga</Link></li>
-            <li><Link href="/events/hiit" className={`${styles.navLink} ${isLinkActive('/events/hiit') ? styles.active : ''}`} onClick={closeMenu}>HIIT</Link></li>
-            <li><Link href="/events/martial" className={`${styles.navLink} ${isLinkActive('/events/martial') ? styles.active : ''}`} onClick={closeMenu}>Arts Martiaux</Link></li>
-            <li><Link href="/contact" className={`${styles.navLink} ${isLinkActive('/contact') ? styles.active : ''}`} onClick={closeMenu}>Contact</Link></li>
+
+        {/* Menu Desktop */}
+        <nav className={styles.desktopNav} role="navigation" aria-label="Menu principal">
+          <ul className={styles.desktopNavList}>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link 
+                  href={item.href} 
+                  className={`${styles.desktopNavLink} ${isLinkActive(item.href) ? styles.active : ''}`} 
+                >
+                  {item.label}
+                  {isLinkActive(item.href) && (
+                    <div className={styles.activeIndicator} />
+                  )}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
+
+        {/* Contact info visible sur desktop */}
+        <div className={styles.contactInfo}>
+          <a href="tel:+33123456789" className={styles.contactLink}>
+            <FaPhone />
+            <span>+33 1 23 45 67 89</span>
+          </a>
+          <a href="mailto:contact@thrivetoday.fr" className={styles.contactLink}>
+            <FaEnvelope />
+            <span>contact@thrivetoday.fr</span>
+          </a>
+        </div>
+
+        {/* Bouton Menu Mobile */}
         <button
           className={styles.mobileMenuButton}
           aria-label="Ouvrir le menu"
           aria-controls="main-navigation"
-          aria-expanded={menuOpen}
+          aria-expanded={isMenuOpen}
           tabIndex={0}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={toggleMenu}
+          ref={firstEl}
         >
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
+
+        {/* Overlay mobile */}
+        {isMenuOpen && (
+          <div 
+            className={styles.mobileOverlay} 
+            onClick={closeMenu} 
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Menu Mobile */}
+        <nav
+          ref={menuRef}
+          className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}
+          role="navigation"
+          aria-label="Menu mobile"
+        >
+          <ul className={styles.mobileNavList}>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link 
+                  href={item.href} 
+                  className={`${styles.mobileNavLink} ${isLinkActive(item.href) ? styles.active : ''}`} 
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                  {isLinkActive(item.href) && (
+                    <div className={styles.activeIndicator} />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Contact mobile */}
+          <div className={styles.mobileContact}>
+            <a href="tel:+33123456789" className={styles.mobileContactLink}>
+              <FaPhone />
+              <span>+33 1 23 45 67 89</span>
+            </a>
+            <a href="mailto:contact@thrivetoday.fr" className={styles.mobileContactLink}>
+              <FaEnvelope />
+              <span>contact@thrivetoday.fr</span>
+            </a>
+          </div>
+        </nav>
       </div>
     </header>
   );

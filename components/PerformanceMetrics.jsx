@@ -38,24 +38,39 @@ const metrics = [
 
 export default function PerformanceMetrics() {
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    setMounted(true);
+    
+    if (typeof window !== 'undefined' && window.IntersectionObserver) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.1 }
+      );
 
-    const element = document.querySelector(`.${styles.container}`);
-    if (element) {
-      observer.observe(element);
+      const element = document.querySelector(`.${styles.container}`);
+      if (element) {
+        observer.observe(element);
+      }
+
+      return () => observer.disconnect();
     }
-
-    return () => observer.disconnect();
   }, []);
+
+  if (!mounted) {
+    return (
+      <section className={styles.performanceSection}>
+        <div className={styles.container}>
+          <h2 className={styles.title}>Performance</h2>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.container}>

@@ -5,14 +5,24 @@ import styles from './layout.module.css';
 // Importation des composants de structure
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ScrollIndicator from '../components/ScrollIndicator';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 // Importation des polices Google via Next.js pour une meilleure performance
-import { Roboto, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 
 // Déclaration des polices avec les poids souhaités
 // L'option display: 'swap' améliore l'affichage en évitant les retards de rendu du texte
-const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'], display: 'swap' });
-const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], display: 'swap' });
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 // Métadonnées globales du site – utiles pour le SEO et l'indexation des moteurs de recherche
 export const metadata = {
@@ -21,7 +31,7 @@ export const metadata = {
     template: "%s | ThriveToday"
   },
   description: "Transformez votre corps et votre esprit avec nos programmes de yoga, HIIT et arts martiaux. Rejoignez ThriveToday pour une vie plus saine et équilibrée.",
-  keywords: ["fitness", "yoga", "HIIT", "arts martiaux", "bien-être", "sport", "entraînement", "santé"],
+  keywords: ["fitness", "yoga", "HIIT", "arts martiaux", "bien-être", "sport", "entraînement", "santé", "thrive today"],
   authors: [{ name: "ThriveToday Team" }],
   creator: "ThriveToday",
   publisher: "ThriveToday",
@@ -30,14 +40,14 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://thrive-today.vercel.app'),
+  metadataBase: new URL('https://thrivetoday.fr'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://thrive-today.vercel.app',
+    url: 'https://thrivetoday.fr',
     title: "ThriveToday - Votre mentor pour une vie pleine d'énergies",
     description: "Transformez votre corps et votre esprit avec nos programmes de yoga, HIIT et arts martiaux.",
     siteName: 'ThriveToday',
@@ -46,7 +56,7 @@ export const metadata = {
         url: '/hero-fitness.webp',
         width: 1200,
         height: 630,
-        alt: 'ThriveToday - Plateforme de bien-être',
+        alt: 'ThriveToday - Fitness et bien-être',
       },
     ],
   },
@@ -75,31 +85,38 @@ export const metadata = {
 // Composant racine de l'application – il enveloppe toutes les pages
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${roboto.className} ${playfair.className}`}>
+    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         {/* Préconnexion aux serveurs Google Fonts – cela réduit le temps de chargement des polices */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Manifest pour PWA */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#1a1a1a" />
+        <meta name="theme-color" content="#6366f1" />
         
         {/* Préchargement des ressources critiques */}
         <link rel="preload" href="/hero-fitness.webp" as="image" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="ThriveToday" />
+        <link rel="apple-touch-icon" href="/logo.png" />
       </head>
 
       <body className={styles.body}>
-        {/* En-tête du site – visible sur toutes les pages */}
-        <Header />
+        <ErrorBoundary>
+          <ScrollIndicator />
+          {/* En-tête du site – visible sur toutes les pages */}
+          <Header />
 
-        {/* Zone principale où s'affichent les différentes pages (Accueil, Contact, etc.) */}
-        <main className={styles.main}>
-          {children}
-        </main>
+          {/* Zone principale où s'affichent les différentes pages (Accueil, Contact, etc.) */}
+          <main className={styles.main}>
+            {children}
+          </main>
 
-        {/* Pied de page global */}
-        <Footer />
+          {/* Pied de page global */}
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );

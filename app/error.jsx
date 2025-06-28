@@ -1,13 +1,22 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './error.module.css';
 
 export default function Error({ error, reset }) {
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     // Log l'erreur pour le debugging
-    console.error('Erreur de l&apos;application:', error);
+    console.error('Erreur de l\'application:', error);
   }, [error]);
+
+  const goHome = () => {
+    if (typeof window !== 'undefined') {
+      window.location.href = '/';
+    }
+  };
 
   return (
     <div className={styles.errorContainer}>
@@ -27,7 +36,7 @@ export default function Error({ error, reset }) {
           </button>
           
           <button 
-            onClick={() => window.location.href = '/'}
+            onClick={goHome}
             className={styles.homeButton}
           >
             Retour à l&apos;accueil

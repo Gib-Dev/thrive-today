@@ -1,0 +1,287 @@
+/* Centrage et largeur max */
+.smartCTASection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #fff 100%);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.ctaWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaCard {
+  background: var(--color-white);
+  border-radius: 2rem;
+  box-shadow: 0 4px 32px rgba(99,102,241,0.08);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.ctaHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctaIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ctaContent {
+  margin-bottom: 1rem;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.ctaSubtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-gray-700);
+  margin-bottom: 0.5rem;
+}
+
+.ctaDescription {
+  color: var(--color-gray-600);
+  margin-bottom: 1rem;
+}
+
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(99,102,241,0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 0 auto;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(99,102,241,0.18);
+}
+
+.urgencyIndicator {
+  margin-top: 0.5rem;
+}
+
+.urgencyBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fff0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+  box-shadow: none;
+}
+
+.ctaFooter {
+  margin-top: 1.5rem;
+}
+
+.trustIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-gray-700);
+  font-size: 1rem;
+}
+
+.ctaNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.navDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-gray-300);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.navDot.active {
+  background: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .ctaCard {
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
+  .ctaTitle {
+    font-size: 1.3rem;
+  }
+  .ctaButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .trustIndicators {
+    gap: 1rem;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ctaContainer {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+  
+  .ctaVisual {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .smartCta {
+    padding: var(--section-margin-mobile) var(--spacing-lg);
+  }
+  
+  .ctaHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .ctaIcon {
+    width: 50px;
+    height: 50px;
+    font-size: var(--font-size-xl);
+  }
+  
+  .ctaTitle {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .ctaButton {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .ctaVisual {
+    height: 250px;
+  }
+  
+  .floatingElement {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .smartCta {
+    padding: var(--section-margin-mobile) var(--spacing-md);
+  }
+  
+  .ctaContainer {
+    gap: var(--spacing-xl);
+  }
+  
+  .ctaFeatures {
+    gap: var(--spacing-xs);
+  }
+  
+  .feature {
+    font-size: var(--font-size-sm);
+  }
+  
+  .ctaVisual {
+    height: 200px;
+  }
+  
+  .floatingElement {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animations spéciales */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.urgencyBadge {
+  animation: pulse 2s infinite;
+}
+
+/* Effets de glassmorphism */
+.ctaButton {
+  backdrop-filter: blur(10px);
+}
+
+.ctaVisual {
+  backdrop-filter: blur(10px);
+}
+
+/* Remove or comment out the problematic 3D transforms */
+/* .ctaVisual {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+} */
+
+/* Remove translateZ properties that cause Framer Motion issues */
+/* .ctaContent {
+  transform: translateZ(20px);
+}
+
+.ctaVisual {
+  transform: translateZ(-20px);
+} */ 

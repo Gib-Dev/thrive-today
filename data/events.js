@@ -3,6 +3,7 @@
 
 export const eventsData = [
   {
+    id: 'yoga-course',
     // Événement Yoga
     title: "Cours de Yoga",
     description: "Séance revitalisante de yoga pour tous.",
@@ -10,6 +11,7 @@ export const eventsData = [
     link: "/events/yoga",
   },
   {
+    id: 'hiit-training',
     // Événement HIIT
     title: "Entraînement HIIT",
     description: "Entraînement intensif pour brûler des calories rapidement.",
@@ -17,6 +19,7 @@ export const eventsData = [
     link: "/events/hiit",
   },
   {
+    id: 'martial-arts',
     // Événement Arts Martiaux
     title: "Arts Martiaux",
     description: "Découvrez les techniques d'arts martiaux dans un cadre stimulant.",
