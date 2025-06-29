@@ -1,50 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaTachometerAlt, FaMobile, FaDesktop, FaSearch } from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
+import { FaChartLine, FaUsers, FaTrophy, FaHeart } from 'react-icons/fa';
 import styles from './PerformanceMetrics.module.css';
-
-const metrics = [
-  {
-    icon: FaTachometerAlt,
-    title: 'Performance',
-    value: '95+',
-    unit: 'Lighthouse',
-    description: 'Score optimisé sur tous les critères'
-  },
-  {
-    icon: FaMobile,
-    title: 'Mobile',
-    value: '100',
-    unit: 'Responsive',
-    description: 'Interface adaptée à tous les appareils'
-  },
-  {
-    icon: FaDesktop,
-    title: 'Bundle',
-    value: '<500KB',
-    unit: 'Gzippé',
-    description: 'Taille optimisée pour un chargement rapide'
-  },
-  {
-    icon: FaSearch,
-    title: 'SEO',
-    value: '100',
-    unit: 'Optimisé',
-    description: 'Métadonnées complètes et Open Graph'
-  }
-];
 
 export default function PerformanceMetrics() {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
     
     if (typeof window !== 'undefined' && window.IntersectionObserver) {
-      const observer = new IntersectionObserver(
+      const observer = new window.IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
@@ -58,60 +27,90 @@ export default function PerformanceMetrics() {
         observer.observe(element);
       }
 
-      return () => observer.disconnect();
+      return () => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      };
     }
   }, []);
 
+  const metrics = [
+    {
+      title: "Membres actifs",
+      value: "2,500+",
+      icon: FaUsers,
+      description: "Personnes qui transforment leur vie"
+    },
+    {
+      title: "Taux de réussite",
+      value: "94%",
+      icon: FaChartLine,
+      description: "Objectifs atteints par nos membres"
+    },
+    {
+      title: "Récompenses",
+      value: "150+",
+      icon: FaTrophy,
+      description: "Prix et certifications obtenus"
+    },
+    {
+      title: "Satisfaction",
+      value: "4.9/5",
+      icon: FaHeart,
+      description: "Note moyenne de nos services"
+    }
+  ];
+
   if (!mounted) {
     return (
-      <section className={styles.performanceSection}>
-        <div className={styles.container}>
-          <h2 className={styles.title}>Performance</h2>
+      <section className={styles.container}>
+        <div className={styles.content}>
+          <h2 className={styles.title}>Nos Performances</h2>
+          <p className={styles.subtitle}>
+            Des résultats concrets qui parlent d'eux-mêmes
+          </p>
+          <div className={styles.metricsGrid}>
+            {metrics.map((metric, index) => (
+              <div key={metric.title} className={styles.metricCard}>
+                <div className={styles.metricIcon}>
+                  <metric.icon />
+                </div>
+                <h3 className={styles.metricTitle}>{metric.title}</h3>
+                <div className={styles.metricValue}>{metric.value}</div>
+                <p className={styles.metricDescription}>{metric.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
   }
 
   return (
-    <section className={styles.container}>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className={styles.content}
-      >
-        <h2 className={styles.title}>Métriques de Performance</h2>
+    <section className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
+      <div className={styles.content}>
+        <h2 className={styles.title}>Nos Performances</h2>
         <p className={styles.subtitle}>
-          Découvrez pourquoi ThriveToday offre une expérience utilisateur exceptionnelle
+          Des résultats concrets qui parlent d'eux-mêmes
         </p>
-        
         <div className={styles.metricsGrid}>
           {metrics.map((metric, index) => (
-            <motion.div
-              key={metric.title}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-              className={styles.metricCard}
+            <div 
+              key={metric.title} 
+              className={`${styles.metricCard} ${isVisible ? styles.animateIn : ''}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={styles.metricIcon}>
                 <metric.icon />
               </div>
               <h3 className={styles.metricTitle}>{metric.title}</h3>
-              <div className={styles.metricValue}>
-                <span className={styles.value}>{metric.value}</span>
-                <span className={styles.unit}>{metric.unit}</span>
-              </div>
+              <div className={styles.metricValue}>{metric.value}</div>
               <p className={styles.metricDescription}>{metric.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 } 

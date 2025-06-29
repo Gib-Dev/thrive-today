@@ -2,10 +2,8 @@
 
 'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaHeart, FaUsers, FaTrophy, FaLeaf, FaArrowRight } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { FaDumbbell, FaHeart, FaUsers, FaTrophy, FaClock, FaStar } from 'react-icons/fa';
 import styles from './AboutSection.module.css';
 
 /**
@@ -20,148 +18,169 @@ import styles from './AboutSection.module.css';
  * - linkText : Texte du bouton
  */
 export default function AboutSection() {
+    const [isVisible, setIsVisible] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        
+        if (typeof window !== 'undefined' && window.IntersectionObserver) {
+            const observer = new window.IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                },
+                { threshold: 0.1 }
+            );
+
+            const element = document.querySelector(`.${styles.aboutSection}`);
+            if (element) {
+                observer.observe(element);
+            }
+
+            return () => {
+                if (element) {
+                    observer.unobserve(element);
+                }
+            };
+        }
+    }, []);
+
     const features = [
-        { 
-            id: 'health-wellness',
-            icon: FaHeart, 
-            title: "Santé & Bien-être", 
-            description: "Priorité à votre santé physique et mentale",
-            color: "#ef4444"
+        {
+            id: 1,
+            icon: FaDumbbell,
+            title: "Programmes Personnalisés",
+            description: "Des entraînements adaptés à vos objectifs et votre niveau"
         },
-        { 
-            id: 'community',
-            icon: FaUsers, 
-            title: "Communauté", 
-            description: "Plus de 1500 membres actifs",
-            color: "#3b82f6"
+        {
+            id: 2,
+            icon: FaHeart,
+            title: "Bien-être Holistique",
+            description: "Approche complète : corps, esprit et nutrition"
         },
-        { 
-            id: 'excellence',
-            icon: FaTrophy, 
-            title: "Excellence", 
-            description: "15 ans d'expertise reconnue",
-            color: "#f59e0b"
+        {
+            id: 3,
+            icon: FaUsers,
+            title: "Communauté Motivante",
+            description: "Rejoignez une communauté de passionnés du fitness"
         },
-        { 
-            id: 'natural',
-            icon: FaLeaf, 
-            title: "Naturel", 
-            description: "Approche holistique du fitness",
-            color: "#10b981"
+        {
+            id: 4,
+            icon: FaTrophy,
+            title: "Suivi des Progrès",
+            description: "Mesurez vos améliorations avec des outils avancés"
+        },
+        {
+            id: 5,
+            icon: FaClock,
+            title: "Flexibilité Totale",
+            description: "Entraînez-vous quand vous voulez, où vous voulez"
+        },
+        {
+            id: 6,
+            icon: FaStar,
+            title: "Expertise Certifiée",
+            description: "Des coachs qualifiés pour vous accompagner"
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                duration: 0.8,
-                staggerChildren: 0.2
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    const featureVariants = {
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        },
-        hover: {
-            scale: 1.05,
-            transition: {
-                duration: 0.2,
-                ease: "easeInOut"
-            }
-        }
-    };
-
-    return (
-        <section id="about" className={styles.aboutSection}>
-            <motion.div 
-                className={styles.aboutContainer}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-            >
-                <motion.div className={styles.imageContainer} variants={itemVariants}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/skretching.jpg"
-                            alt="Personne faisant du yoga"
-                            width={500}
-                            height={500}
-                            className={styles.aboutImage}
-                        />
-                        <div className={styles.imageOverlay}></div>
-                    </div>
-                </motion.div>
-
-                <motion.div className={styles.textContainer} variants={itemVariants}>
-                    <motion.div className={styles.badge} variants={itemVariants}>
-                        <span>À propos de nous</span>
-                    </motion.div>
-                    
-                    <motion.h2 className={styles.title} variants={itemVariants}>
-                        Transformez votre vie avec{' '}
-                        <span className={styles.gradientText}>ThriveToday</span>
-                    </motion.h2>
-                    
-                    <motion.p className={styles.description} variants={itemVariants}>
-                        Chez ThriveToday, nous croyons en l'importance de la santé physique et mentale. 
-                        Notre mission est d'offrir un environnement accueillant et des programmes adaptés à tous les niveaux.
-                    </motion.p>
-
-                    <motion.div className={styles.features} variants={itemVariants}>
-                        {features.map((feature) => (
-                            <motion.div 
-                                key={feature.id} 
-                                className={styles.feature}
-                                variants={featureVariants}
-                                whileHover="hover"
-                            >
-                                <motion.div 
-                                    className={styles.featureIcon}
-                                    style={{ '--icon-color': feature.color }}
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ duration: 0.6 }}
-                                >
-                                    <feature.icon />
-                                </motion.div>
-                                <div className={styles.featureContent}>
-                                    <h4 className={styles.featureTitle}>{feature.title}</h4>
+    if (!mounted) {
+        return (
+            <section className={styles.aboutSection}>
+                <div className={styles.container}>
+                    <div className={styles.content}>
+                        <div className={styles.textContent}>
+                            <h2 className={styles.title}>À Propos de ThriveToday</h2>
+                            <p className={styles.subtitle}>
+                                Transformez votre vie avec une approche moderne du fitness
+                            </p>
+                            <p className={styles.description}>
+                                ThriveToday est plus qu'une simple plateforme de fitness. Nous créons une expérience 
+                                complète qui combine entraînement personnalisé, nutrition équilibrée et bien-être mental 
+                                pour vous aider à atteindre vos objectifs de manière durable.
+                            </p>
+                            <div className={styles.stats}>
+                                <div className={styles.stat}>
+                                    <span className={styles.statNumber}>10,000+</span>
+                                    <span className={styles.statLabel}>Membres actifs</span>
+                                </div>
+                                <div className={styles.stat}>
+                                    <span className={styles.statNumber}>95%</span>
+                                    <span className={styles.statLabel}>Taux de satisfaction</span>
+                                </div>
+                                <div className={styles.stat}>
+                                    <span className={styles.statNumber}>50+</span>
+                                    <span className={styles.statLabel}>Programmes disponibles</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className={styles.featuresGrid}>
+                            {features.map((feature) => (
+                                <div key={feature.id} className={styles.featureCard}>
+                                    <div className={styles.featureIcon}>
+                                        <feature.icon />
+                                    </div>
+                                    <h3 className={styles.featureTitle}>{feature.title}</h3>
                                     <p className={styles.featureDescription}>{feature.description}</p>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
-                    <motion.div variants={itemVariants}>
-                        <Link href="/apropos" className={styles.aboutButton}>
-                            <span>Découvrir plus</span>
-                            <FaArrowRight className={styles.buttonIcon} />
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            </motion.div>
+    return (
+        <section className={`${styles.aboutSection} ${isVisible ? styles.visible : ''}`}>
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <div className={`${styles.textContent} ${isVisible ? styles.animateIn : ''}`}>
+                        <h2 className={styles.title}>À Propos de ThriveToday</h2>
+                        <p className={styles.subtitle}>
+                            Transformez votre vie avec une approche moderne du fitness
+                        </p>
+                        <p className={styles.description}>
+                            ThriveToday est plus qu'une simple plateforme de fitness. Nous créons une expérience 
+                            complète qui combine entraînement personnalisé, nutrition équilibrée et bien-être mental 
+                            pour vous aider à atteindre vos objectifs de manière durable.
+                        </p>
+                        <div className={styles.stats}>
+                            <div className={styles.stat}>
+                                <span className={styles.statNumber}>10,000+</span>
+                                <span className={styles.statLabel}>Membres actifs</span>
+                            </div>
+                            <div className={styles.stat}>
+                                <span className={styles.statNumber}>95%</span>
+                                <span className={styles.statLabel}>Taux de satisfaction</span>
+                            </div>
+                            <div className={styles.stat}>
+                                <span className={styles.statNumber}>50+</span>
+                                <span className={styles.statLabel}>Programmes disponibles</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className={`${styles.featuresGrid} ${isVisible ? styles.animateIn : ''}`}>
+                        {features.map((feature, index) => (
+                            <div 
+                                key={feature.id} 
+                                className={`${styles.featureCard} ${isVisible ? styles.animateIn : ''}`}
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                                <div className={styles.featureIcon}>
+                                    <feature.icon />
+                                </div>
+                                <h3 className={styles.featureTitle}>{feature.title}</h3>
+                                <p className={styles.featureDescription}>{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }
