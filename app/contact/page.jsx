@@ -129,8 +129,7 @@ export default function Contact() {
                 <FaMapMarkerAlt className={styles.mapIcon} />
                 <h3>ThriveToday - Centre de Fitness</h3>
                 <p>123 Rue du Sport, 75001 Paris</p>
-                <p>Métro : Châtelet (lignes 1, 4, 7, 11, 14)</p>
-                <p>Bus : 21, 38, 47, 58, 67, 69, 70, 72, 74, 75, 76, 81, 85, 96</p>
+      
               </div>
             </div>
           </div>

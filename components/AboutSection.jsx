@@ -19,11 +19,8 @@ import styles from './AboutSection.module.css';
  */
 export default function AboutSection() {
     const [isVisible, setIsVisible] = useState(false);
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
-        
         if (typeof window !== 'undefined' && window.IntersectionObserver) {
             const observer = new window.IntersectionObserver(
                 ([entry]) => {
@@ -85,56 +82,6 @@ export default function AboutSection() {
             description: "Des coachs qualifiés pour vous accompagner"
         }
     ];
-
-    if (!mounted) {
-        return (
-            <section className={styles.aboutSection}>
-                <div className={styles.aboutContainer}>
-                    <div className={styles.textContainer}>
-                        <span className={styles.badge}>À Propos de ThriveToday</span>
-                        <h2 className={styles.title}>
-                            <span className={styles.gradientText}>Transformez votre vie</span> avec une approche moderne du fitness
-                        </h2>
-                        <p className={styles.description}>
-                            ThriveToday est plus qu'une simple plateforme de fitness. Nous créons une expérience 
-                            complète qui combine entraînement personnalisé, nutrition équilibrée et bien-être mental 
-                            pour vous aider à atteindre vos objectifs de manière durable.
-                        </p>
-                        <div className={styles.stats}>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>10,000+</span>
-                                <span className={styles.statLabel}>Membres actifs</span>
-                            </div>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>95%</span>
-                                <span className={styles.statLabel}>Taux de satisfaction</span>
-                            </div>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>50+</span>
-                                <span className={styles.statLabel}>Programmes disponibles</span>
-                            </div>
-                        </div>
-                        <a href="#contact" className={styles.aboutButton}>
-                            Nous rejoindre
-                        </a>
-                    </div>
-                    <div className={styles.features}>
-                        {features.map((feature) => (
-                            <div key={feature.id} className={styles.feature}>
-                                <div className={styles.featureIcon}>
-                                    <feature.icon />
-                                </div>
-                                <div className={styles.featureContent}>
-                                    <h3 className={styles.featureTitle}>{feature.title}</h3>
-                                    <p className={styles.featureDescription}>{feature.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
-    }
 
     return (
         <section className={`${styles.aboutSection} ${isVisible ? styles.visible : ''}`}>

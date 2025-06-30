@@ -9,7 +9,6 @@ import styles from './Header.module.css';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef(null);
   const firstEl = useRef(null);
@@ -20,12 +19,6 @@ export default function Header() {
   };
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
     const handleScroll = () => {
       if (typeof window !== 'undefined') {
         const scrolled = window.scrollY > 50;
@@ -37,10 +30,10 @@ export default function Header() {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
-  }, [mounted]);
+  }, []);
 
   useEffect(() => {
-    if (!mounted || !isMenuOpen) return;
+    if (!isMenuOpen) return;
 
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -83,7 +76,7 @@ export default function Header() {
         document.body.style.overflow = '';
       };
     }
-  }, [isMenuOpen, mounted]);
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -99,50 +92,6 @@ export default function Header() {
     { href: '/apropos', label: 'À propos' },
     { href: '/contact', label: 'Contact' }
   ];
-
-  // Rendu côté serveur sans les états dynamiques
-  if (!mounted) {
-    return (
-      <header className={styles.header}>
-        <div className={styles.navContainer}>
-          <Link href="/" className={styles.logo} aria-label="Accueil ThriveToday">
-            <img src="/logo.png" alt="ThriveToday Logo" />
-            <span className={styles.logoText}>ThriveToday</span>
-          </Link>
-
-          <nav className={styles.desktopNav} role="navigation" aria-label="Menu principal">
-            <ul className={styles.desktopNavList}>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link 
-                    href={item.href} 
-                    className={`${styles.desktopNavLink} ${isLinkActive(item.href) ? styles.active : ''}`} 
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className={styles.contactInfo}>
-            <a href="tel:+33123456789" className={styles.contactLink}>
-              <FaPhone />
-              <span>+33 1 23 45 67 89</span>
-            </a>
-            <a href="mailto:contact@thrivetoday.fr" className={styles.contactLink}>
-              <FaEnvelope />
-              <span>contact@thrivetoday.fr</span>
-            </a>
-          </div>
-
-          <button className={styles.mobileMenuButton} aria-label="Menu">
-            <FaBars />
-          </button>
-        </div>
-      </header>
-    );
-  }
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
@@ -198,49 +147,28 @@ export default function Header() {
 
         {/* Overlay mobile */}
         {isMenuOpen && (
-          <div 
-            className={styles.mobileOverlay} 
-            onClick={closeMenu} 
-            aria-hidden="true"
-          />
+          <nav
+            ref={menuRef}
+            className={styles.mobileNav}
+            id="main-navigation"
+            aria-label="Menu mobile"
+          >
+            <ul className={styles.mobileNavList}>
+              {navItems.map((item, idx) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`${styles.mobileNavLink} ${isLinkActive(item.href) ? styles.active : ''}`}
+                    onClick={closeMenu}
+                    ref={idx === 0 ? firstEl : idx === navItems.length - 1 ? lastEl : null}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
-
-        {/* Menu Mobile */}
-        <nav
-          ref={menuRef}
-          className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}
-          role="navigation"
-          aria-label="Menu mobile"
-        >
-          <ul className={styles.mobileNavList}>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link 
-                  href={item.href} 
-                  className={`${styles.mobileNavLink} ${isLinkActive(item.href) ? styles.active : ''}`} 
-                  onClick={closeMenu}
-                >
-                  {item.label}
-                  {isLinkActive(item.href) && (
-                    <div className={styles.activeIndicator} />
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Contact mobile */}
-          <div className={styles.mobileContact}>
-            <a href="tel:+33123456789" className={styles.mobileContactLink}>
-              <FaPhone />
-              <span>+33 1 23 45 67 89</span>
-            </a>
-            <a href="mailto:contact@thrivetoday.fr" className={styles.mobileContactLink}>
-              <FaEnvelope />
-              <span>contact@thrivetoday.fr</span>
-            </a>
-          </div>
-        </nav>
       </div>
     </header>
   );

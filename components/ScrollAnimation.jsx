@@ -6,15 +6,10 @@ import styles from './ScrollAnimation.module.css';
 // Hook pour gérer les animations de scroll avec CSS pur
 const useCSSScrollAnimation = (direction = "up", delay = 0, threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted || typeof window === 'undefined' || !window.IntersectionObserver) {
+    if (typeof window === 'undefined' || !window.IntersectionObserver) {
       return;
     }
 
@@ -36,9 +31,9 @@ const useCSSScrollAnimation = (direction = "up", delay = 0, threshold = 0.1) => 
         observer.unobserve(ref.current);
       }
     };
-  }, [isMounted, threshold]);
+  }, [threshold]);
 
-  return { ref, isVisible, isMounted };
+  return { ref, isVisible };
 };
 
 // Composant principal ScrollAnimation avec CSS pur
@@ -50,7 +45,7 @@ export default function ScrollAnimation({
   threshold = 0.1,
   ...props 
 }) {
-  const { ref, isVisible, isMounted } = useCSSScrollAnimation(direction, delay, threshold);
+  const { ref, isVisible } = useCSSScrollAnimation(direction, delay, threshold);
 
   const getAnimationClass = () => {
     if (!isVisible) return styles.hidden;
@@ -71,23 +66,7 @@ export default function ScrollAnimation({
     }
   };
 
-  if (!isMounted) {
-    return <div ref={ref} className={className} {...props}>{children}</div>;
-  }
-
-  const animationClass = getAnimationClass();
-  const delayStyle = delay > 0 ? { animationDelay: `${delay}s` } : {};
-
-  return (
-    <div
-      ref={ref}
-      className={`${className} ${animationClass}`}
-      style={delayStyle}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+  return <div ref={ref} className={`${className} ${getAnimationClass()}`} {...props}>{children}</div>;
 }
 
 // Composant pour les éléments enfants avec animation en cascade

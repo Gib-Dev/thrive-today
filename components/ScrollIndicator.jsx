@@ -5,14 +5,9 @@ import styles from './ScrollIndicator.module.css';
 
 export default function ScrollIndicator() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted || typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
 
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
@@ -25,11 +20,7 @@ export default function ScrollIndicator() {
     updateScrollProgress(); // Initial call
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, [mounted]);
-
-  if (!mounted) {
-    return null;
-  }
+  }, []);
 
   return (
     <div className={styles.scrollIndicator}>

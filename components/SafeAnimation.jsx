@@ -5,13 +5,10 @@ import { useState, useEffect, useRef } from 'react';
 // Hook pour gérer les animations de scroll avec CSS pur
 const useCSSScrollAnimation = (direction = "up", delay = 0, threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const elementRef = useRef(null);
 
   useEffect(() => {
-    setIsMounted(true);
-    
-    if (!isMounted || typeof window === 'undefined' || !window.IntersectionObserver) {
+    if (typeof window === 'undefined' || !window.IntersectionObserver) {
       return;
     }
 
@@ -33,7 +30,7 @@ const useCSSScrollAnimation = (direction = "up", delay = 0, threshold = 0.1) => 
         observer.unobserve(elementRef.current);
       }
     };
-  }, [isMounted, delay, threshold]);
+  }, [delay, threshold]);
 
   return { elementRef, isVisible };
 };

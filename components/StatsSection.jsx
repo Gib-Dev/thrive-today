@@ -14,14 +14,26 @@ const stats = [
 export default function StatsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [counts, setCounts] = useState(stats.map(() => 0));
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    if (typeof window !== 'undefined' && window.IntersectionObserver) {
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.1 }
+      );
+      const element = document.querySelector(`.${styles.container}`);
+      if (element) {
+        observer.observe(element);
+      }
+      return () => observer.disconnect();
+    }
   }, []);
 
   useEffect(() => {
-    if (!isVisible || !mounted) return;
     const durations = [1200, 1400, 1600, 1800];
     stats.forEach((stat, i) => {
       let start = 0;
@@ -48,24 +60,6 @@ export default function StatsSection() {
       }
       requestAnimationFrame(animateCount);
     });
-  }, [isVisible, mounted]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.IntersectionObserver) {
-      const observer = new window.IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        },
-        { threshold: 0.1 }
-      );
-      const element = document.querySelector(`.${styles.container}`);
-      if (element) {
-        observer.observe(element);
-      }
-      return () => observer.disconnect();
-    }
   }, []);
 
   return (
@@ -77,7 +71,7 @@ export default function StatsSection() {
           {stats.map((stat) => (
             <div key={stat.id} className={styles.statCard}>
               <div className={styles.statIcon}><stat.icon /></div>
-              <div className={styles.statValue}>{mounted && isVisible ? counts[stats.findIndex(s => s.id === stat.id)] + stat.suffix : '0' + stat.suffix}</div>
+              <div className={styles.statValue}>{isVisible ? counts[stats.findIndex(s => s.id === stat.id)] + stat.suffix : '0' + stat.suffix}</div>
               <div className={styles.statLabel}>{stat.label}</div>
               <div className={styles.statDescription}>{stat.description}</div>
             </div>
