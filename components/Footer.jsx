@@ -51,11 +51,11 @@ export default function Footer() {
 		return (
 			<footer className={styles.footer}>
 				<div className={styles.container}>
-					<div className={styles.footerContent}>
-						<div className={styles.footerSection}>
-							<div className={styles.logoSection}>
+					<div className={styles.topSection}>
+						<div className={styles.about}>
+							<div className={styles.logo}>
 								<img src="/logo.png" alt="ThriveToday Logo" className={styles.logo} />
-								<h3 className={styles.logoText}>ThriveToday</h3>
+								<span className={styles.logoText}>ThriveToday</span>
 							</div>
 							<p className={styles.description}>
 								Transformez votre vie avec nos programmes de fitness personnalisés et notre communauté motivante.
@@ -74,7 +74,7 @@ export default function Footer() {
 							</div>
 						</div>
 
-						<div className={styles.footerSection}>
+						<div className={styles.links}>
 							<h4 className={styles.sectionTitle}>Liens rapides</h4>
 							<ul className={styles.linkList}>
 								{quickLinks.map((link, index) => (
@@ -87,9 +87,9 @@ export default function Footer() {
 							</ul>
 						</div>
 
-						<div className={styles.footerSection}>
+						<div className={styles.links}>
 							<h4 className={styles.sectionTitle}>Nos services</h4>
-							<ul className={styles.serviceList}>
+							<ul className={styles.linkList}>
 								{services.map((service, index) => (
 									<li key={index} className={styles.serviceItem}>
 										{service}
@@ -98,26 +98,26 @@ export default function Footer() {
 							</ul>
 						</div>
 
-						<div className={styles.footerSection}>
+						<div className={styles.links}>
 							<h4 className={styles.sectionTitle}>Contact</h4>
-							<div className={styles.contactInfo}>
-								<div className={styles.contactItem}>
+							<ul className={styles.contactList}>
+								<li className={styles.contactItem}>
 									<FaPhone className={styles.contactIcon} />
 									<span>+33 1 23 45 67 89</span>
-								</div>
-								<div className={styles.contactItem}>
+								</li>
+								<li className={styles.contactItem}>
 									<FaEnvelope className={styles.contactIcon} />
 									<span>contact@thrivetoday.fr</span>
-								</div>
-								<div className={styles.contactItem}>
+								</li>
+								<li className={styles.contactItem}>
 									<FaMapMarkerAlt className={styles.contactIcon} />
 									<span>Paris, France</span>
-								</div>
-							</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 
-					<div className={styles.footerBottom}>
+					<div className={styles.bottomSection}>
 						<p className={styles.copyright}>
 							© 2024 ThriveToday. Tous droits réservés.
 						</p>
@@ -134,11 +134,11 @@ export default function Footer() {
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.container}>
-				<div className={styles.footerContent}>
-					<div className={styles.footerSection}>
-						<div className={styles.logoSection}>
+				<div className={styles.topSection}>
+					<div className={styles.about}>
+						<div className={styles.logo}>
 							<img src="/logo.png" alt="ThriveToday Logo" className={styles.logo} />
-							<h3 className={styles.logoText}>ThriveToday</h3>
+							<span className={styles.logoText}>ThriveToday</span>
 						</div>
 						<p className={styles.description}>
 							Transformez votre vie avec nos programmes de fitness personnalisés et notre communauté motivante.
@@ -157,7 +157,7 @@ export default function Footer() {
 						</div>
 					</div>
 
-					<div className={styles.footerSection}>
+					<div className={styles.links}>
 						<h4 className={styles.sectionTitle}>Liens rapides</h4>
 						<ul className={styles.linkList}>
 							{quickLinks.map((link, index) => (
@@ -170,9 +170,9 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					<div className={styles.footerSection}>
+					<div className={styles.links}>
 						<h4 className={styles.sectionTitle}>Nos services</h4>
-						<ul className={styles.serviceList}>
+						<ul className={styles.linkList}>
 							{services.map((service, index) => (
 								<li key={index} className={styles.serviceItem}>
 									{service}
@@ -181,26 +181,26 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					<div className={styles.footerSection}>
+					<div className={styles.links}>
 						<h4 className={styles.sectionTitle}>Contact</h4>
-						<div className={styles.contactInfo}>
-							<div className={styles.contactItem}>
+						<ul className={styles.contactList}>
+							<li className={styles.contactItem}>
 								<FaPhone className={styles.contactIcon} />
 								<span>+33 1 23 45 67 89</span>
-							</div>
-							<div className={styles.contactItem}>
+							</li>
+							<li className={styles.contactItem}>
 								<FaEnvelope className={styles.contactIcon} />
 								<span>contact@thrivetoday.fr</span>
-							</div>
-							<div className={styles.contactItem}>
+							</li>
+							<li className={styles.contactItem}>
 								<FaMapMarkerAlt className={styles.contactIcon} />
 								<span>Paris, France</span>
-							</div>
-						</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 
-				<div className={styles.footerBottom}>
+				<div className={styles.bottomSection}>
 					<p className={styles.copyright}>
 						© {currentYear} ThriveToday. Tous droits réservés.
 					</p>
